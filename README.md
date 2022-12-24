@@ -8,7 +8,7 @@
   Phần mềm: Instagram
   <br>
 </h1>
-<img src="https://www.dpreview.com/files/p/articles/7082059749/49803d8eb5ea235a5860ac942caece70_download-png-download-eps-instagram-logo-clipart-png_1024-1024.jpeg" alt="Instagram" width="700" height="700">
+<img src="https://www.dpreview.com/files/p/articles/7082059749/49803d8eb5ea235a5860ac942caece70_download-png-download-eps-instagram-logo-clipart-png_1024-1024.jpeg" alt="Instagram" width="auto" height="500" align = "center" object-fit = "cover">
 
 
 <p align="center">
