@@ -5,20 +5,27 @@
   <br>
   Nhóm 1
   <br>
-  Phần mềm: Instagram
+  Môn học: Công nghệ phần mềm
   <br>
 </h1>
 
 <p align="center">
-	<img src="https://www.dpreview.com/files/p/articles/7082059749/49803d8eb5ea235a5860ac942caece70_download-png-download-eps-instagram-logo-clipart-png_1024-1024.jpeg" alt="Instagram" width="auto" height="350" align = "center" object-fit = "cover">
+
 </p>
 
-
 <p align="center">
-	<a href="#team-member">Thành viên nhóm</a>
+	<a href="#team-member">Team members</a>
+	<a href="#product">Product</a>
+	<a href="#how-to-use">How to use</a>
+	<a href="#"> </a>
 </p>
 
 ## Team members
 * A38253 Nguyễn Hoàng Đức Anh
 * A38520 Mai Văn Mạnh
 * A38911 Vũ Tiến Dũng
+
+## Product
+* Instagram
+
+## How to use
