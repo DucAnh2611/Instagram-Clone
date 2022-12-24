@@ -9,8 +9,13 @@
   <br>
 </h1>
 
-<h2>
-  Thành viên nhóm :  
-</h2>
+<p align="center">
 
+</p>
 
+<p align="center">
+	<a href="#team-member">Thành viên nhóm</a>
+</p>
+
+## Team members
+* Vũ Tiến Dũng
