@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-	<a href="#team-member">Team members</a> -
+	<a href="#team-members">Team members</a> -
 	<a href="#product">Product</a> -
 	<a href="#how-to-use">How to use</a> - 
 	<a href="#"> </a>
