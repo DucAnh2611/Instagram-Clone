@@ -15,7 +15,7 @@
 
 
 <p align="center">
-	<a href="##team-member">Thành viên nhóm</a>
+	<a href="#team-member">Thành viên nhóm</a>
 </p>
 
 ## Team members
