@@ -26,8 +26,8 @@
 * A38911 Vũ Tiến Dũng
 
 ## Product
-* Instagram
-* Figma: <a href=""> Link</a>
+* Create a sofware ralated to INSTAGRAM
+* Figma: <a href="https://www.figma.com/file/Mwj5K4MhZSelFxlovuHdaB/Tuan_1_CongNghePhanMem?node-id=0%3A1&t=9h2brY1h5a8HcHVK-1">Figma screen</a>
 ## How to use
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
