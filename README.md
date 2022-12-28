@@ -9,8 +9,10 @@
   <br>
 </h1>
 
-<p align="center">
+<p align="center"></p>
 
+<p align="center">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" width = "350px" height = "auto">
 </p>
 
 <p align="center">
