@@ -11,7 +11,7 @@
 <p align="center"></p>
 
 <p align="center">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" width = "300px" height = "auto">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" width = "px" height = "auto">
 </p>
 
 <p align="center">
