@@ -44,3 +44,9 @@ $ npm install
 # Run the app
 $ npm start
 ```
+
+## Require
+
+* Database: PostgresSQL
+* Nodejs: lastest version
+* HTML, CSS, JAVASCRIPT
