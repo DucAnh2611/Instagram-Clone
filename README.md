@@ -47,6 +47,6 @@ $ npm start
 
 ## Require
 
-* Database: PostgresSQL
+* Database: PostgresSQL, pg adminv4 6
 * Nodejs: lastest version
 * HTML, CSS, JAVASCRIPT
