@@ -23,7 +23,7 @@
 ## Team members
 * A38253 Nguyễn Hoàng Đức Anh
 * A38520 Mai Văn Mạnh
-* A38911 Vũ Tiến Dũngádf
+* A38911 Vũ Tiến Dũng
 
 ## Product
 * Create a sofware ralated to INSTAGRAM
