@@ -1,40 +1,65 @@
+.DashboardPane{
+    margin: 30px auto;
+    height: fit-content;
+    justify-content: center;
+}
 .postDisplayHolder {
     width: 100%;
-    height: auto;
-    border: 0.5px solid var(--Color5);
+    height: 600px;
+    border: 0.5px solid var(--Color3);
     display: flex;
-
+    flex-direction: row;
 }
-.postDisplayHolder .pictureHolder {
-    width: 85%;
-    height: auto;
-    object-fit: contain;
+.pictureHolder::before{
+    position: absolute;
+    content: '';
+    background-color: var(--text1);
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+.pictureHolder {
+    position: relative;
+    overflow: hidden;
+    width: 60%;
+    height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
-.postDisplayHolder .pictureHolder img{
-    width: 100%;
+.pictureHolder > img{
     height: 100%;
+    z-index: 2;
 }
-
-.postDisplayHolder .contentHolder {
-    /* padding: 15px; */
-}
-.contentHolder .userOwnPostHolder {
+.contentHolder {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 60px;
-    border-bottom: 0.5px solid rgba(162, 161, 161, 0.3);
-}
-.userOwnPostHolder .avatarUserOwnPostHolder{
-    width: 60px;
-    height: 60px;
-    margin: 0 5px;
-}
-.avatarUserOwnPostHolder .avatarUserOwnPostClip {
-    width: 100%;
+    width: 40%;
     height: 100%;
+    border-bottom: 0.5px solid var(--Color3);
+    border-left: 0.5px solid var(--Color3);
+    background-color: var(--Color1);
+}
+.userOwnPostHolder{
+    height: 8%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 0.5px solid var(--Color3);
+}
+.avatarUserOwnPostHolder{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.avatarUserOwnPostClip{
+    height: 45px;
+    width: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,111 +69,154 @@
     height: 65%;
     border-radius: 50%;
 }
-.contentHolder .icon-moreOption {
-    width: 35px;
-    height: 35px;
-    margin-left: 47%;
-    cursor: pointer;
-}
-.contentHolder .icon-moreOption img{
-    width: 100%;
-    height: 100%;
-}
-
-.contentHolder .commentOnPostHolder {
-    width: 100%;
-    height: 330px;
-}
-.contentHolder .commentOnPostHolder .oneLineCommentHolder{
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-    height: 50px;
-    width: auto;
-    margin-bottom: 5px;
-}
-.contentHolder .commentOnPostHolder .oneLineCommentHolder:first-child {
-    padding-top: 10px;
-}
-.oneLineCommentHolder .avatarUserCommentPostHolder {
-    width: 45px;
-    height: 45px;
-}
-.avatarUserCommentPostHolder .avatarUserCommentPostClip {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-.avatarUserCommentPostHolder .avatarUserCommentPostClip img{
-    width: 80%;
-    height: auto;
-    border-radius: 50%;
-}
-.oneLineCommentHolder .usernameCommentPostHolder a{
+a.userOwnPostHolder{
     text-decoration: none;
-    color: black;
+    font-size: 1.5vh;
+    color: var(--text1);
+    font-weight: bold;
 }
-.oneLineCommentHolder .usernameCommentPostHolder a:hover {
-    color: rgb(50, 103, 236);
+a.userOwnPostHolder:hover{
+    color: var(--Color3);
 }
 
-.btnReactOwnPost {
+.commentOnPostHolder {
+    padding: 10px 0;
     width: 100%;
-    height: auto;
-    margin-top: 5px;
-    padding-top: 5px;
-    border-top: 0.5px solid rgba(162, 161, 161, 0.3);
-    border-bottom: 0.5px solid rgba(162, 161, 161, 0.3);
+    height: calc(65% - 20px);
+    border-bottom: 0.5px solid var(--Color3);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
-.btnReactOwnPost {
-
+.oneLineCommentHolder{
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    padding: 0px 10px;
 }
-.btnReactOwnPost .icon-post-wrap{
+.avatarUserCommentPostHolder {
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+.avatarUserCommentPostClip {
     width: 100%;
-    height: 35px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 100%;
 }
-.like-post-icon .red_color {
-    color: red;
-    display: none;
+.avatarUserCommentPostClip > img{
+    width: 100%;
 }
-.btnReactOwnPost .icon-post-wrap i{
-    font-size: 25px;
+.usernameCommentPostHolder{
+    margin-left: 10px;
+    margin-top: 5px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+.usernameCommentPost{
+    color: var(--text1);
+    font-size: 1.5vh;
+}
+.usernameCommentPostPorfile{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--text1);
+    margin-right: 5px ;
+}
+.commentDate{
+    width: 100%;
+    font-size: 1.3vh;
+    color: var(--Color3);
+}
+.btnReactOwnPost {
+    width: 100%;
+    height: 17%;
+    border-bottom: 0.5px solid var(--Color3);
+}
+.icon-post-wrap{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 5px;
+}
+.buttonReact {
+    height: 40px;
+    background-color: transparent;
+    border: none;
+}
+.buttonReact > img {
+    height: 25px;
+}
+.buttonReact:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+.addCommentToPostHolder{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 100%;
+    width: 90%;
+
+}
+.addCommentToPost[contenteditable]:empty::before{
+    content: "Add a comment";
+    color: var(--Color3);
+    font-size: 1.5vh;
+}
+.addCommentToPost[contenteditable]{
+    font-size: 1.5vh;
+    max-height: 100%;
+    width: 80%;
+    margin-left: 10px;
+    border: none;
+    resize: none;
+    overflow-y: scroll;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.addCommentToPost[contenteditable]:hover{
+    cursor: text;
+}
+.addCommentToPost[contenteditable]:focus{
+    outline: none;
+}
+.postCommentPost{
+    width: 20%;
+    color: var(--button2);
+    font-weight: bold;
+    font-size: 1.5vh;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+.postCommentPost:hover {
     cursor: pointer;
 }
-.icon-post-wrap .like-post-icon {
-    position: relative;
-    width: 12%;
-    height: 70%;
-    display: block;
-    margin-left: 15px;
+.date-time-post, .countLikeOwnPost{
+    margin-left: 10px;
 }
-.icon-post-wrap .like-post-icon i {
-    position: absolute;
-    left: 0;
+.countLikeOwnPost {
+    font-weight: bold;
 }
-.icon-post-wrap .share-icon-post {
-    margin-left: 12px;
-    color: rgb(100, 100, 100);
-}
-.icon-post-wrap .bookmark-icon-post {
-    margin-left: 55%;
-    color: rgb(73, 73, 73);
-}
-
-.countLike_DateTime-wrap {
-    padding: 0 15px;
-}
-.countLike_DateTime-wrap .countLikeOwnPost {
-    font-weight: 600
-}
-.countLike_DateTime-wrap .date-time-post {
-    font-size: 14px;
-    margin: 1px 0 3px 0;
-    color: #959595;
+.date-time-post {
+    font-size: 1.4vh;
+    color: var(--Color3);
 }
 .Comment_part {
-    padding: 8px 15px;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
 }
