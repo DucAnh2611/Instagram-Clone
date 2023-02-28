@@ -77,12 +77,9 @@ app.post('/home/:postId/postComment', async function(request, response) {
   var getUserId = await postComment.query(`SELECT userID FROM user_profile WHERE username_user='${request.body.username}'`);
   var userId = getUserId.rows[0].userid;
 
-  var maxIndexCommentOfPost = await postComment.query(`SELECT COUNT(*) FROM commentOfPost`);
-  var maxIndexCommentTb = parseInt(maxIndexCommentOfPost.rows[0].count)+1;
-  
   var insertComment = await postComment.query(`
   INSERT INTO commentOfPost 
-  VALUES (${maxIndexCommentTb}, ${request.params.postId}, ${userId}, '${request.body.commentText}', '${request.body.commentTime}' )
+  VALUES (DEFAULT, ${request.params.postId}, ${userId}, '${request.body.commentText}', '${request.body.commentTime}' )
   `);
   await postComment.end();
 
@@ -150,12 +147,52 @@ app.post('/message/to/:username_rev',async function(request,response) {
 app.get('/message/to/:username_rev',function(request,response) {
   response.sendFile(path.join(__dirname + '/Pages/chat.html'));
 });
+// singlePost
+app.get('/p/:postid',function(request, respone) {
+  respone.sendFile(path.join(__dirname + '/Pages/profile_postLoad.html'));
+})
+app.post('/p/:postid',async function(request, respone) {
+  var postInfor = new Client(clientConnect);
+  await postInfor.connect();
+  var getAllPostInfor = await postInfor.query(`SELECT * FROM post WHERE postid = ${request.params.postid}`);
+  var getAllCountPost = await postInfor.query(`SELECT COUNT(*) FROM likeOfPost WHERE postid = ${request.params.postid}`);
+  var getAllCommentPost = await postInfor.query(`
+    SELECT commentcontent, username_user, avatar_path, commentdate, commentid
+    FROM commentOfPost AS cp INNER JOIN user_profile AS up ON cp.userid = up.userid 
+    WHERE postid = ${request.params.postid}
+    ORDER BY commentdate
+  `);
+  var getAllInforOwnPost = await postInfor.query(`
+    SELECT username_user, avatar_path 
+    FROM post AS p INNER JOIN user_profile AS up ON p.userid = up.userid 
+    WHERE postid = ${request.params.postid}
+  `);
+  var getPhotoPicPost = await postInfor.query(`SELECT photopath FROM photo WHERE postid = ${request.params.postid}`);
+  var userReqId = await postInfor.query(`SELECT userid FROM user_profile WHERE username_user ='${request.body.username}'`);
+  var likePost = await postInfor.query(`SELECT COUNT(*) FROM likeOfPost WHERE postid = ${request.params.postid} AND userid = ${userReqId.rows[0].userid} `)
+  await postInfor.end()
+  respone.status(200).json({
+    postInfor: {...getAllPostInfor.rows[0], photopath: getPhotoPicPost.rows[0].photopath},  
+    postCountLike: getAllCountPost.rows[0].count,
+    getAllCommentPost: {...getAllCommentPost.rows},
+    ownerPost: {...getAllInforOwnPost.rows[0]},
+    like: (()=>{
+      if(likePost.rows[0].count == 1) {
+        return true;
+      }else {
+        return false;
+      }
+    })()
+  })
+})
+
+//
 
 app.post('/message/to/:username_rev/getChat', async function(request,response) {
   let clientRetrieve = new Client(clientConnect);
   await clientRetrieve.connect();
 
-  var selectAllMessage = await clientRetrieve.query(`SELECT up1.username_user as senderName, up1.avatar_path as senderAvatar, up2.username_user as recieverName, messageContent, messagesendtime FROM (user_profile as up1 INNER JOIN message_user as mu ON up1.userid = mu.senderid INNER JOIN user_profile as up2 on mu.recieverid = up2.userid) WHERE ( (up1.username_user='${request.body.username}' AND up2.username_user = '${request.params.username_rev}') OR (up1.username_user='${request.params.username_rev}' AND up2.username_user = '${request.body.username}') ) ORDER BY messagesendtime`);
+  var selectAllMessage = await clientRetrieve.query(`SELECT up1.username_user as senderName, up1.avatar_path as senderAvatar, up2.username_user as recieverName,messageid, messageContent, messagesendtime FROM (user_profile as up1 INNER JOIN message_user as mu ON up1.userid = mu.senderid INNER JOIN user_profile as up2 on mu.recieverid = up2.userid) WHERE ( (up1.username_user='${request.body.username}' AND up2.username_user = '${request.params.username_rev}') OR (up1.username_user='${request.params.username_rev}' AND up2.username_user = '${request.body.username}') ) ORDER BY messagesendtime`);
 
   await clientRetrieve.end();
 
@@ -168,7 +205,7 @@ app.post('/message/to/:username_rev/sendMessage', async function(request,respons
   var maxIndexMessage = await clientSendMessage.query(`(SELECT COUNT(*) FROM message_user)`);
   var idSender = await clientSendMessage.query(`SELECT userid FROM user_profile WHERE (username_user = '${request.body.username}' )`);
   var idReciever = await clientSendMessage.query(`SELECT userid FROM user_profile WHERE (username_user = '${request.params.username_rev}' )`);
-  var sendMessage = await clientSendMessage.query(`INSERT INTO message_user VALUES (${parseInt(maxIndexMessage.rows[0].count)+1}, ${parseInt(idSender.rows[0].userid)}, ${parseInt(idReciever.rows[0].userid)}, '${request.body.message}', '${request.body.sendTime}')`);
+  var sendMessage = await clientSendMessage.query(`INSERT INTO message_user VALUES (DEFAULT, ${parseInt(idSender.rows[0].userid)}, ${parseInt(idReciever.rows[0].userid)}, '${request.body.message}', '${request.body.sendTime}')`);
 
   await clientSendMessage.end();
 
@@ -184,6 +221,7 @@ app.post('/message/recentChat', async function(request,response) {
 
   response.status(200).json(selectAllMessage.rows);
 });
+//socket
 io.on('connection', (socket) =>{
   socket.on('chat message', (messageSent) => {
     io.emit('chat message', messageSent);
@@ -210,18 +248,34 @@ io.on('connection', (socket) =>{
     `);
     var insertNoti = await likePost.query(`
       INSERT INTO noti
-      VALUES (DEFAULT, ${SenderId}, ${RecieverId}, 'false', ${info.type}, '${(new Date(info.likeTime)).toUTCString()}')
+      VALUES (DEFAULT, ${SenderId}, ${RecieverId}, 'false', ${info.type}, '${(new Date(info.likeTime)).toUTCString()}', '/p/${info.postid}')
     `);
   await likePost.end();
   
-  io.emit('noticePost', {
-    ...userGetNoTice.rows[0],
-    username_rec: userGetNoTice.rows[0].username_rec,
-    username_send: info.sender,
-    postid: info.postid,
-    likeTime: (new Date(info.likeTime)).toUTCString()})
+    io.emit('noticePost', {
+      ...userGetNoTice.rows[0],
+      username_rec: userGetNoTice.rows[0].username_rec,
+      username_send: info.sender,
+      postid: info.postid,
+      likeTime: (new Date(info.likeTime)).toUTCString()
+    })
+  })
+  socket.on('noticeFollow',async (info) => {
+    let followUser = new Client(clientConnect);
+    await followUser.connect();
+    var usernameSend = await followUser.query(`SELECT username_user FROM user_profile WHERE userid= ${info.senderId}`);
+    var usernameRec = await followUser.query(`SELECT username_user FROM user_profile WHERE userid= ${info.recieveId}`)
+    
+    var insertFollowNoti = await followUser.query(`INSERT INTO noti VALUES (DEFAULT, ${info.senderId}, ${info.recieveId}, 'false', 3, '${(new Date(info.dateNotice)).toUTCString()}', '/${usernameSend.rows[0].username_user}')`)
+
+    await followUser.end();
+
+    io.emit('noticeFollow', {
+      username_rec: usernameRec.rows[0].username_user
+    })
   })
 });
+
 //Ho tro phan Tim kiem
 app.post('/search', async function(request, respone){
   let clientUserLoad = new Client(clientConnect);
@@ -321,7 +375,7 @@ app.post('/edit/authEdit',async function(request, respone) {
       await clientUpdate.end();
     }
     else{
-       respone.status(200).json({status: "same"});
+       respone.status(200).json({status: "sameUsername"});
     }
 
   }
@@ -498,7 +552,6 @@ app.post('/singupInfo', function(request, response) {
         // // current seconds
         // let seconds = date_ob.getSeconds();
         
-        var maxIndexUserID = await clientInsertUser.query(`(SELECT COUNT(*) FROM user_profile)`);
         var birthdayDefault = `${year}-${month}-${date}`;
         var createDate = birthdayDefault;
         var emailUser = "";
@@ -523,7 +576,7 @@ app.post('/singupInfo', function(request, response) {
             break;
         }
         if(statusSignUp == 5){
-          var insertUser = await clientInsertUser.query(`INSERT INTO user_profile VALUES ( '${(parseInt((maxIndexUserID.rows)[0].count)+1)}', '${username}', '${password}', '${emailUser}', '${phoneUser}', ${activePhone}, '${fullname}', '${birthdayDefault}', 'Prefer not to say', '${createDate}', '${uploadDefaultPic.secure_url}', '' )`);
+          var insertUser = await clientInsertUser.query(`INSERT INTO user_profile VALUES ( DEFAULT, '${username}', '${password}', '${emailUser}', '${phoneUser}', ${activePhone}, N'${fullname}', '${birthdayDefault}', 'Prefer not to say', '${createDate}', '${uploadDefaultPic.secure_url}', '' )`);
           await clientInsertUser.end();
         }
        
@@ -544,15 +597,12 @@ app.post('/userPost', async function(request, response) {
   let userPost = new Client(clientConnect);
   await userPost.connect();
 
-  var maxIndexPost = await userPost.query(`(SELECT COUNT(*) FROM post)`);
-  var maxIndexPhoto = await userPost.query(`(SELECT COUNT(*) FROM photo)`);
-
   var getUserId = await userPost.query(`SELECT userID FROM user_profile WHERE username_user='${request.body.username}'`);
   var userId = getUserId.rows[0].userid;
 
   var insertPostToDb = await userPost.query(`
   INSERT INTO post 
-  VALUES (${(parseInt((maxIndexPost.rows)[0].count)+1)}, ${userId}, '${request.body.dateCreate}', '${request.body.postCaption}')
+  VALUES (DEFAULT, ${userId}, '${request.body.dateCreate}', '${request.body.postCaption}')
   `);
 
   
@@ -562,14 +612,13 @@ app.post('/userPost', async function(request, response) {
 
   var insertphotoToDb = await userPost.query(`
   INSERT INTO photo
-  VALUES (${(parseInt((maxIndexPhoto.rows)[0].count)+1) }, ${ (parseInt((maxIndexPost.rows)[0].count)+1) }, '${result.secure_url}')
+  VALUES (DEFAULT,  (SELECT MAX(postId) FROM post), '${result.secure_url}')
   `);
 
   await userPost.end();
   response.status(200).json({status: "ok", urlImg: result.secure_url});
 })
 //notification
-
 app.post('/notification/getFull', async function(request, response) {
   let getFull = new Client(clientConnect);
   await getFull.connect();
@@ -587,6 +636,15 @@ app.post('/notification/getFull', async function(request, response) {
   await getFull.end();
 
   response.status(200).json(getfullNoti.rows)
+})
+app.post(`/notification/changeNoti`, async function(request, respone) {
+  var notiid = request.query.notiid;
+  var changeNoti = new Client(clientConnect);
+  await changeNoti.connect();
+  var changeNotiStatus = await changeNoti.query(`UPDATE noti SET statenoti = 'true' WHERE notiid = ${notiid}`)
+  await changeNoti.end();
+
+  respone.status(200).json({status: "ok"});
 })
 //profile_post
 app.get('/:username', function(request, response) {
@@ -660,7 +718,7 @@ app.post('/:username/addToFollowDB', async function(request, response) {
 
   await addToFollowDB.end();
 
-  response.status(200).json({currentFollow: getCountFollowed.rowCount})
+  response.status(200).json({currentFollow: getCountFollowed.rowCount, senderNotiId: userLoginId, recieveNotiId: userId, dateFollow: request.body.dateFollow})
 })
 
 app.post('/:username/removeFromFollowDB', async function(request, response) {
