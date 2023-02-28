@@ -16,6 +16,7 @@ async function UpdateFields() {
         document.querySelector(".IdUserLogin").innerText = data.username_user;
         document.querySelector(".nameUserLogin").innerText = data.fullname;
     })
+    
 };
 UpdateFields();
 
@@ -97,7 +98,6 @@ async function postLoad() {
             </div>
             `;
         });
-        document.querySelector(".lds-rollerHolder").style.visibility = "hidden";
         var viewAllCommentPost = document.querySelectorAll(".viewAllCommentPost");
         viewAllCommentPost.forEach((buttonShow, index) =>{
             buttonShow.addEventListener("click", ()=>{
@@ -146,8 +146,16 @@ async function postLoad() {
                 unlikeBtn[index].classList.add("hidebtn");
             })
         })
+        var cmtBtn =document.querySelectorAll(".comment");
+        cmtBtn.forEach((commentBtn, index) => {
+            commentBtn.addEventListener("click", () => {
+                document.querySelectorAll(".addCommentToPost")[index].focus();
+                updateComment(data[index], index);
+            })
+        })
+        document.querySelector(".lds-rollerHolder").style.visibility = "hidden";
     })
-}
+};
 async function updateComment(comment, index){
     var ListCommentPost = document.querySelectorAll(".ListCommentPost");
     ListCommentPost[index].innerHTML=``;
@@ -171,7 +179,7 @@ async function updateComment(comment, index){
         var ListCommentPostScroll =document.querySelector(".ListCommentPost");
         ListCommentPostScroll.scrollTop = ListCommentPostScroll.scrollHeight;
     })
-}
+};
 async function postCommentToPost(post, index){
     var postComment = await fetch(`/home/${post.postid}/postComment`, {
         method: "POST",
@@ -190,7 +198,7 @@ async function postCommentToPost(post, index){
         document.querySelectorAll(".addCommentToPost")[index].focus();
         updateComment(post, index);
     });
-}
+};
 async function likePost(post, index) {
     var postComment = await fetch(`/home/${post.postid}/likePost`, {
         method: "POST",
@@ -205,7 +213,7 @@ async function likePost(post, index) {
     .then((data) => {
         document.querySelectorAll(".countLikeOnePost")[index].innerHTML =`${data.countLikeLeft} likes`
     });
-}
+};
 async function unlikePost(post, index) {
     var postComment = await fetch(`/home/${post.postid}/unlikePost`, {
         method: "POST",
@@ -220,6 +228,6 @@ async function unlikePost(post, index) {
     .then((data) => {
         document.querySelectorAll(".countLikeOnePost")[index].innerHTML =`${data.countLikeLeft} likes`
     });
-}
+};
 var socket = io();
 postLoad();
