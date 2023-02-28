@@ -1,7 +1,6 @@
 html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
-    box-sizing: border-box;
 }
 :root {
     --Color1: #FEFEFF;
@@ -35,6 +34,7 @@ body{
     z-index: 1;
     top: 0;
     left: 0;
+
     display: flex;
     flex-direction: row;
 }
@@ -106,6 +106,11 @@ body{
     border-bottom-right-radius: 20px;
     box-shadow: 0px 0px 20px var(--Color3);
     z-index: 0;
+    animation: fadin 0.2s;
+}
+@keyframes fadin {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
 }
 .searchDiv, .headerNotification{
     display: flex;
@@ -255,12 +260,19 @@ body{
     overflow-y: scroll;
 }
 .aNotificationInList{
-    margin-top: 10px;
-    height: 60px;
+    min-height: 80px;
+    height: 80px;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-decoration: none;
+    color: var(--text1);
+    transition-duration: 0.1s;
+}
+.notSeenNoti{
+    background-color: var(--button1);
+    font-weight: bold;
 }
 .avatarNotiHolder{
     width: 20%;
@@ -280,16 +292,17 @@ body{
     border: 3px solid var(--Color3);
 }
 .contentNotiHolder{
-    width: fit-content;
+    width: 80%;
     height: 100%;
     overflow-y: hidden;
     display: flex;
     flex-direction: column ;
     justify-content: center;
+    row-gap: 5px;
 }
 .contentTextNoti{
     overflow-wrap: break-word;
-    width: 80%;
+    width: 100%;
     margin: 0;
     font-size: 1.5vh;
 }
@@ -304,10 +317,14 @@ body{
     color: var(--Color7);
 }
 .profileLink:hover {
-    color: var(--Color3);
+    color: var(--Color7);
 }
 .aNotificationInList:hover {
     background-color: var(--button1);
+    cursor: pointer;
+}
+.notSeenNoti:hover{
+    background-color: var(--Color5);
 }
 .avatarNoti{
     height: 40px;
@@ -317,7 +334,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
+    align-items: center;
     height: 35px;
     width: 35px;
 
@@ -351,10 +368,11 @@ body{
     margin-left: 335px;
 }
 .DashboardPane{
-    height: auto;
-    min-height: 530px;
-    width: 780px;
+    height: fit-content;
+    min-height: 500px;
+    width: 850px;
     margin: 30px auto 0px;
+
     display: flex;
     flex-direction: row;
 }
@@ -393,11 +411,12 @@ body{
 .nameAndID{
     height: 100%;
     width: auto;
-    max-width: 270px;
+    max-width: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-left: 20px;
+    overflow-wrap: normal;
 
     font-size: 1.5vh;
 }
