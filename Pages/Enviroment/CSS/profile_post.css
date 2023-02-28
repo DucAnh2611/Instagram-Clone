@@ -1,6 +1,7 @@
 .aPostDisplayProfile{
-    height: 280px;
-    width: 280px;
+    margin: 10px;
+    height: 270px;
+    width: 270px;
 
     display: flex;
     justify-content: center;
@@ -17,11 +18,18 @@
     background-color: var(--text1);
     z-index: -1;
 }
+.aPostPhotoProfile{
+    transition-duration: 0.2s;
+}
 .aPostDisplayProfile:hover {
     cursor: pointer;
 }
+.aPostDisplayProfile:hover >.aPostPhotoProfile{
+    transform: scale(1.1);
+}
 .aPostDisplayProfile:hover > .commentLikePostProfile{
     visibility: visible;
+    backdrop-filter: blur(1px);
 }
 .commentLikePostProfile{
     visibility: hidden;
@@ -56,7 +64,4 @@
 }
 .likeIconPostProfile{
     height: 30px;
-}
-.aPostPhotoProfile{
-    width: 100%;
 }
