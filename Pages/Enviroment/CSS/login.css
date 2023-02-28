@@ -1,0 +1,283 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+:root {
+    --Color1: #FEFEFF;
+    --Color2: #FBFBFA;
+    --Color3: #C6C6C7;
+    --Color4: #FBFAFB;
+    --Color5: #8F8EAA;
+    --ColorFacebook: #3951A4;
+
+    --button1: #EEEFEE;
+    --button2: #4CB5F8;
+    --text1: #272726;
+    --noti1: #FF3141
+}
+*{
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Color2);
+}
+
+.loginForm-Main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 1000px;
+}
+.mobilePhoneSection{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+}
+.loginSection{
+    width: 350px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loginForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 59%;
+    position: relative;
+    background-color: var(--Color1);
+    border: 1px solid var(--Color3);
+}
+.mainLoginMethod{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+    position: relative;
+
+}
+.LoginForm-Logo{
+    width: 190px;
+    margin: 30px;
+}
+.userLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+}
+.username-Login, .password-Login, .submit-login{
+    font-size: 1.3vh;
+    height: 35px;
+    width: 70%;
+    background-color: var(--Color4);
+    border-radius: 3px;
+    border: 1px solid var(--Color3);
+    margin-bottom: 10px;
+    padding: 0px 3%;
+    outline: none;
+    transition-duration: 0.2s;
+}
+.username-Login:focus, .password-Login:focus{
+    border: 1px solid var(--Color5);
+}
+.saveLogin{
+    height: 10%;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.saveLoginInfo{
+    border: 2px solid var(--Color2);
+}
+.saveLoginInfo:checked {
+    background-color: #272726;
+}
+.saveText{
+    margin-left: 10px;
+    font-size: 1.3vh;
+}
+.submit-login {
+    height: 35px;
+    width: 78%;
+    background-color: var(--button2);
+    border-radius: 10px ;
+    margin: 0;
+    color: var(--Color1);
+    font-weight: bold;
+}
+.submit-login:hover {cursor: pointer;}
+.divideMethod{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: var(--Color5);
+    font-weight: 600;
+    font-size: 1.4vh;
+}
+
+.divideMethod::after, .divideMethod::before{
+    content: '';
+    position: absolute;
+    width: 100px;
+    border-top: 2px solid var(--Color3);
+    top: 50%;
+    right: 15%;
+}
+.divideMethod::after {
+    left: 15%
+}
+.otherLoginMethod{
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.LogoFacebook{
+    max-width: 15px;
+    margin-right: 5px;
+}
+.LoginWithFacebook{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: none;
+    border: none;
+
+}
+.LoginWithFacebook{
+    cursor: pointer;
+}
+.loginFacebookText{
+    font-size: 1.6vh;
+    font-weight: 500;
+    color: var(--ColorFacebook);
+}
+.forgotPassword{
+    color: var(--ColorFacebook);
+    text-decoration: none;
+    font-size: 1.2vh;
+}
+.signUpForm{
+    margin-top: 10px;
+    height: 9%;
+    width: 100%;
+    position: relative;
+    background-color: var(--Color1);
+    border: 1px solid var(--Color3);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 1.5vh;
+}
+
+.signUpText{
+    display: flex;
+    align-items: center;
+}
+
+.signUpLink{
+    border: none;
+    background-color: var(--Color1);
+    margin-left: 1px;
+    color: var(--button2);
+    font-weight: bold;
+}
+.signUpLink:hover {
+    cursor: pointer;
+}
+.downloadInsta{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+.getTheAppText, .getTheAppLink{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    height: 10%;
+}
+.getTheAppText{
+    font-size: 1.6vh;
+}
+.getTheAppLink{
+    height: 60%;
+}
+.ggPlay, .microsoft {
+    height: 45%;
+}
+.ggPlay_Pic, .microsoft_Pic{
+    height: 100%;
+    border-radius: 5px;
+}
+.microsoft_Pic{
+    margin-left: 5px;
+}
+
+.firstPhone, .secoundPhone {
+    position: absolute;
+
+    height: 80%;
+    width: 600px;
+}
+.phone{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+.behind{
+    left: 40%;
+    top: 48%;
+}
+.front{
+    left: 55%;
+}
+.screen{
+        width: 43.5%;
+}
+
+.refresh{
+    display: none;
+}
+.active{
+    display: block;
+}
+@media screen and (max-width: 875px) {
+    .mobilePhoneSection{
+        display: none;
+    }
+}

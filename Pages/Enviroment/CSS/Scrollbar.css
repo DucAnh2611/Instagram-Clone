@@ -1,0 +1,36 @@
+:root {
+    --Color1: #FEFEFF;
+    --Color2: #FBFBFA;
+    --Color3: #C6C6C7;
+    --Color4: #EFEFEF;
+    --Color5: rgb(0,0,0,0.2);
+    --Color6: rgb(0,0,0,1);
+    --Color7: rgb(0,0,0,0.5);
+    --ColorFacebook: #3951A4;
+    --button1: #EEEFEE;
+    --button2: #4CB5F8;
+    --text1: #272726;
+    --noti1: #FF3141;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+
+  }
+::-webkit-scrollbar-track {
+    background-color: var(--Color2);
+  }
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    border: 5px solid var(--Color2);
+    background-clip: content-box;
+    background: var(--button2);
+    border-radius: 10px;
+}
+
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ColorFacebook);
+}

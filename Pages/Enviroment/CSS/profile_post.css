@@ -1,0 +1,62 @@
+.aPostDisplayProfile{
+    height: 280px;
+    width: 280px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+.aPostDisplayProfile::before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: var(--text1);
+    z-index: -1;
+}
+.aPostDisplayProfile:hover {
+    cursor: pointer;
+}
+.aPostDisplayProfile:hover > .commentLikePostProfile{
+    visibility: visible;
+}
+.commentLikePostProfile{
+    visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    transition-duration: 0.1s;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.commentPostProfile, .likePostProfile{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.countCommentProfile, .countLikeProfile{
+    color: var(--Color1);
+    font-weight: bold;
+    font-size: 1.8vh;
+    margin-left: 5px;
+}   
+.likePostProfile{
+    margin-left: 25px;
+}
+.commentIconPostProfile{
+    height: 25px;
+}
+.likeIconPostProfile{
+    height: 30px;
+}
+.aPostPhotoProfile{
+    width: 100%;
+}
