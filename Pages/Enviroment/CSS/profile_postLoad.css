@@ -40,14 +40,15 @@
     align-items: center;
 }
 .avatarUserOwnPostHolder .avatarUserOwnPostClip img{
-    width: 70%;
-    height: 70%;
+    width: 65%;
+    height: 65%;
     border-radius: 50%;
 }
 .contentHolder .icon-moreOption {
     width: 35px;
     height: 35px;
     margin-left: 47%;
+    cursor: pointer;
 }
 .contentHolder .icon-moreOption img{
     width: 100%;
@@ -72,17 +73,15 @@
 .oneLineCommentHolder .avatarUserCommentPostHolder {
     width: 45px;
     height: 45px;
-    margin-right: 7px;
 }
 .avatarUserCommentPostHolder .avatarUserCommentPostClip {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 .avatarUserCommentPostHolder .avatarUserCommentPostClip img{
-    width: 75%;
+    width: 80%;
     height: auto;
     border-radius: 50%;
 }
@@ -90,11 +89,66 @@
     text-decoration: none;
     color: black;
 }
+.oneLineCommentHolder .usernameCommentPostHolder a:hover {
+    color: rgb(50, 103, 236);
+}
 
 .btnReactOwnPost {
     width: 100%;
     height: auto;
     margin-top: 5px;
     padding-top: 5px;
-    border: 0.5px solid rgba(162, 161, 161, 0.3);
+    border-top: 0.5px solid rgba(162, 161, 161, 0.3);
+    border-bottom: 0.5px solid rgba(162, 161, 161, 0.3);
+}
+.btnReactOwnPost {
+
+}
+.btnReactOwnPost .icon-post-wrap{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+}
+.like-post-icon .red_color {
+    color: red;
+    display: none;
+}
+.btnReactOwnPost .icon-post-wrap i{
+    font-size: 25px;
+    cursor: pointer;
+}
+.icon-post-wrap .like-post-icon {
+    position: relative;
+    width: 12%;
+    height: 70%;
+    display: block;
+    margin-left: 15px;
+}
+.icon-post-wrap .like-post-icon i {
+    position: absolute;
+    left: 0;
+}
+.icon-post-wrap .share-icon-post {
+    margin-left: 12px;
+    color: rgb(100, 100, 100);
+}
+.icon-post-wrap .bookmark-icon-post {
+    margin-left: 55%;
+    color: rgb(73, 73, 73);
+}
+
+.countLike_DateTime-wrap {
+    padding: 0 15px;
+}
+.countLike_DateTime-wrap .countLikeOwnPost {
+    font-weight: 600
+}
+.countLike_DateTime-wrap .date-time-post {
+    font-size: 14px;
+    margin: 1px 0 3px 0;
+    color: #959595;
+}
+.Comment_part {
+    padding: 8px 15px;
 }
