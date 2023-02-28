@@ -1,0 +1,478 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+:root {
+    --Color1: #FEFEFF;
+    --Color2: #FBFBFA;
+    --Color3: #C6C6C7;
+    --Color4: #EFEFEF;
+    --Color5: rgb(0,0,0,0.2);
+    --Color6: rgb(0,0,0,1);
+    --Color7: rgb(0,0,0,0.5);
+    --ColorFacebook: #3951A4;
+    --button1: #EEEFEE;
+    --button2: #4CB5F8;
+    --text1: #272726;
+    --noti1: #FF3141;
+}
+*{
+    margin: 0;
+}
+.settingPane{
+    height: fit-content;
+    min-height: 500px;
+    width: 935px;
+    margin: 30px auto 0;
+
+    background-color: var(--Color1);
+    border-radius: 2px;
+    border: 1px solid var(--Color3);
+
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.functionSetting{
+    width: 30%;
+    padding-right: 1px;
+    border-right: 1px solid var(--Color3);
+}
+.displayFunctionSetting{
+    width: 100%;
+}
+.aFunctionSetting{
+    width: 100%;
+    height: fit-content;
+    border-left: 2px solid var(--Color1);
+    
+    transition-duration: 0.2s;
+    text-decoration: none;
+    color: var(--text1);
+    display: block;
+}
+.aFunctionSetting:hover{
+    background-color: var(--Color2);
+    border-left: 2px solid var(--Color5);
+
+    cursor: pointer;
+}
+.activeSetting{
+    color: var(--text1);
+    border-left: 1px solid var(--text1);
+    font-weight: 500;
+}
+.activeSetting:hover{
+    background-color: var(--Color1);
+    border-left: 1px solid var(--text1);
+}
+.functionNameSetting{
+    width: 80%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    padding: 13px 4% 13px 15%;
+    font-size: 1.5vh;
+}
+.displayFunctionSetting{
+    display: flex;
+    justify-content: center;
+}
+.editProfile{
+    width: 100%;
+    height: fit-content;
+
+    padding: 20px 50px; 
+}
+
+.aLineInformation{
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 10px;
+    
+    display: flex;
+    flex-direction: row;
+}
+.pictureEditProfile{
+    display: flex;
+    flex-direction: row;
+
+    height: 70px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.pictureDiv{
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+
+    padding: 5px;
+    overflow: hidden;
+    transition-duration: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+.pictureDiv:hover {
+    transform: scale(1.05);
+}
+.avatarEditProfile{
+    height: 35px;
+    width: auto;
+}
+.labelInputSetting, .pictureBefore{
+    width: 20%;
+    padding: 5px 30px 0px 20px;
+}
+.pictureBefore {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-top: 0;
+}
+.usernameAndChangePicture{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.usernameProfile{
+    height: auto;
+    width:auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+.changeProfilePicture{
+    background-color: transparent;
+    border: none;
+    height: auto;
+    width: 150px;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1.5vh;
+    color: var(--button2);
+    font-weight: 600;
+    transition-duration: 0.2s;
+}
+.changeProfilePicture:hover{
+    cursor: pointer;
+    color: var(--ColorFacebook);
+}
+.labelInputSetting{
+    height: 100%;
+    text-align: right;
+    font-weight: 500;
+
+}
+.inputEdit, .descriptionForInput, .usernameAndChangePicture{
+    width: 80%;
+}
+.inputEdit, .birthday{
+    height: 23px;
+    padding: 6px 10px;
+
+    border-radius: 3px;
+    background-color: var(--Color2);
+    border: 1px solid var(--Color3);
+    margin-bottom: 10px;
+    color: var(--text1);
+    font-size: 1.6vh;
+}
+.inputEdit::placeholder {
+    font-size: 1.6vh;
+    color: var(--Color7);
+
+    display: flex;
+    align-items: center;
+}
+.inputEdit:disabled {
+    background-color: var(--Color4);
+    
+}
+.inputEdit:disabled::placeholder {
+    color: var(--Color3);
+    
+}
+.birthday{
+    width: 80%;
+    justify-content: flex-start;
+    align-items: center;
+}
+.pickGender{
+
+    font-size: 1.6vh;
+    color: var(--text1);
+    text-align: left;
+}
+.pickGender:hover{
+    color: var(--Color7);
+    cursor: text;
+}
+.pickGender:focus {
+    outline: none;
+    caret-color: transparent;
+}
+.inputDescription, .usernameAndChangePicture{
+    display: flex;
+    flex-direction: column;
+    padding-right: 10%;
+    width: 80%;
+}
+.descriptionForInput{
+    font-size: 1.3vh;
+    color: var(--Color7);
+    margin-bottom: 10px;
+}
+
+.headerDes{
+    font-size: 1.5vh;
+    font-weight: 500;
+    margin: 0;
+}
+textarea.inputEdit{
+    min-height: 100px;
+    width: 80%;
+    resize: vertical;
+}
+.confirmPhoneNumber, .submit{
+    background-color: var(--button2);
+    border: none;
+
+    height: 35px;
+    border-radius: 10px;
+    width: 200px;
+    color: var(--Color1);
+    font-weight: 600;
+    font-size: 1.6vh;
+    transition-duration: 0.2s;
+}
+.submit{
+    margin-top: 20px;
+}
+.confirmPhoneNumber:hover , .submit:hover{
+    cursor: pointer;
+    background-color: var(--ColorFacebook);
+}
+.genderPicker{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 10px;
+    background-color: var(--Color1);
+    height: fit-content;
+    min-height: 220px;
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+.firstPartGenderPicker{
+    width: 100%;
+}
+.firstPartGenderPicker{
+    height: 50px;
+    border-bottom: 1px solid var(--Color3);
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nameGender{
+    font-size: 1.8vh;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.closeGenderPicker{
+    background-color: transparent;
+    border: none;
+
+    position: absolute;
+    right: 1%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+.closeGenderPicker:hover{
+    cursor: pointer;
+}
+.imgCloseGenderPicker{
+    max-height: 15px;
+}
+.secondAndThird{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 5%;
+    width: 90%;
+    height: auto;
+}
+.secondPartGenderPicker{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.aLineGenderPicker{
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+.GenderPickerInput{
+    -webkit-appearance: none;
+    border: 1px solid var(--Color3);
+    height: 17px;
+    width: 17px;
+
+    border-radius: 100%;
+    transition-duration: 0.2s;
+}
+.GenderPickerInput:checked{
+    border: 5px solid var(--button2);
+}
+.labelGenderPicker{
+    color: var(--text1);
+    font-weight: 600;
+    margin-left: 10px;
+}
+.customGender{
+    display: none;
+    margin-left: 10px;
+    height: 30px;
+    padding: 5px  10px;
+    border-radius: 5px;
+    border: 1px solid var(--Color3);
+}
+.customGender:focus{
+    outline: none;
+    border: 1px solid var(--Color7);
+}
+.thirdPartGenderPicker{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+}
+.DoneGenderPicker{
+    padding: 0;
+    height: 60%;
+    width: 100%;
+    background-color: var(--button2);
+    color: var(--Color1);
+    font-weight: 600;
+    font-size: 1.8vh;
+    border: none;
+    border-radius: 10px;
+}
+.DoneGenderPicker:hover{
+    cursor: pointer;
+    background-color: var(--ColorFacebook);
+}
+.blackBG {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+
+    top:0;
+    left: 0;
+    background-color: var(--text1);
+    opacity: .4;
+
+    z-index: 3;
+}
+.changePicture{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--Color1);
+    border-radius: 10px;
+    height: fit-content;
+    width: 400px;
+    z-index: 4;
+}
+.changePictureTitle, .aLineChangePicture{
+    width: 100%;
+    border-bottom: 1px solid var(--Color3);
+}
+.changePictureTitle{
+    height: 75px;
+}
+.aLineChangePicture{
+    height: 50px;
+}
+.changePictureTitleText, .aLineChangePicture > .uploadText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2.1vh;
+    height: 100%;
+    font-weight: 400;
+}
+.aLineChangePicture > .uploadText, .removeImage, .cancelChangePicture{
+    font-size: 1.5vh;
+    font-weight: bold;
+}
+.removeImage, .cancelChangePicture{
+    height: 100%;
+    width: 100%;
+
+    background-color: transparent;
+    border: none;
+}
+.upload {
+    color: var(--button2);
+}
+.cancelChangePicture{
+    font-weight: 500;
+}
+.uploadText:hover, .removeImage:hover, .cancelChangePicture:hover{
+    cursor: pointer;
+}
+.loadingPictureWaiting{
+    position: absolute;
+
+    height: 20px;
+    width: 20px;
+    border: 7px solid var(--Color4);
+    border-top: 7px solid var(--button2);
+
+    border-radius: 100%;
+    animation: spin 3s linear infinite;
+
+    z-index: 4;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.hide {
+    display: none;
+}
+.show{
+    display: flex;
+}
+
+@media screen and (max-width: 1270px) {
+    
+}
