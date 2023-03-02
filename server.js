@@ -131,22 +131,6 @@ app.post('/home/:postId/unlikePost', async function(request, response) {
 
   response.status(200).json({countLikeLeft: countLikeLeft.rows[0].count});
 });
-//Trang nhan tin
-app.get('/message',function(req,res) {
-  res.sendFile(path.join(__dirname + '/Pages/message.html'));
-});
-app.post('/message/to/:username_rev',async function(request,response) {
-
-  let userChat = new Client(clientConnect);
-  await userChat.connect();
-  var clientUser = await userChat.query(`SELECT username_user,fullname,avatar_path FROM user_profile WHERE username_user='${request.params.username_rev}'`);
-  await userChat.end();
-
-  response.status(200).json(clientUser.rows[0])
-});
-app.get('/message/to/:username_rev',function(request,response) {
-  response.sendFile(path.join(__dirname + '/Pages/chat.html'));
-});
 // singlePost
 app.get('/p/:postid',function(request, respone) {
   respone.sendFile(path.join(__dirname + '/Pages/profile_postLoad.html'));
@@ -186,13 +170,28 @@ app.post('/p/:postid',async function(request, respone) {
   })
 })
 
-//
+//Trang nhan tin
+app.get('/message',function(req,res) {
+  res.sendFile(path.join(__dirname + '/Pages/message.html'));
+});
+app.post('/message/to/:username_rev',async function(request,response) {
+
+  let userChat = new Client(clientConnect);
+  await userChat.connect();
+  var clientUser = await userChat.query(`SELECT username_user,fullname,avatar_path FROM user_profile WHERE username_user='${request.params.username_rev}'`);
+  await userChat.end();
+
+  response.status(200).json(clientUser.rows[0])
+});
+app.get('/message/to/:username_rev',function(request,response) {
+  response.sendFile(path.join(__dirname + '/Pages/chat.html'));
+});
 
 app.post('/message/to/:username_rev/getChat', async function(request,response) {
   let clientRetrieve = new Client(clientConnect);
   await clientRetrieve.connect();
 
-  var selectAllMessage = await clientRetrieve.query(`SELECT up1.username_user as senderName, up1.avatar_path as senderAvatar, up2.username_user as recieverName,messageid, messageContent, messagesendtime FROM (user_profile as up1 INNER JOIN message_user as mu ON up1.userid = mu.senderid INNER JOIN user_profile as up2 on mu.recieverid = up2.userid) WHERE ( (up1.username_user='${request.body.username}' AND up2.username_user = '${request.params.username_rev}') OR (up1.username_user='${request.params.username_rev}' AND up2.username_user = '${request.body.username}') ) ORDER BY messagesendtime`);
+  var selectAllMessage = await clientRetrieve.query(`SELECT up1.username_user as senderName, up1.avatar_path as senderAvatar, up2.username_user as recieverName,messageid, messageContent, messagesendtime, messageid FROM (user_profile as up1 INNER JOIN message_user as mu ON up1.userid = mu.senderid INNER JOIN user_profile as up2 on mu.recieverid = up2.userid) WHERE ( (up1.username_user='${request.body.username}' AND up2.username_user = '${request.params.username_rev}') OR (up1.username_user='${request.params.username_rev}' AND up2.username_user = '${request.body.username}') ) ORDER BY messagesendtime`);
 
   await clientRetrieve.end();
 
@@ -210,6 +209,19 @@ app.post('/message/to/:username_rev/sendMessage', async function(request,respons
   await clientSendMessage.end();
 
   response.status(200).json(sendMessage);
+});
+app.post('/message/to/:username/likeMessage', async function(request,response) {
+  var messageid = request.query.messageid;
+  var usernameLike = request.query.username;
+
+  var likeMessage = new Client(clientConnect);
+  await likeMessage.connect();
+  var userLikeIdDb = await likeMessage.query(`SELECT userid FROM user_profile WHERE username_user = '${usernameLike}'`);
+  var userLikeId = userLikeIdDb.rows[0].userid;
+
+  var insertLike = await likeMessage.query(`INSERT INTO message_like VALUES (DEFAULT, ${messageid}, ${userLikeId})`);
+  await likeMessage.end();
+  response.status(200).json({status: "ok"})
 });
 app.post('/message/recentChat', async function(request,response) {
   let clientRetrieve = new Client(clientConnect);
