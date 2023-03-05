@@ -144,7 +144,7 @@ a{
 }
 .suggestUser{
     margin-top: 10px;
-    height: calc(87%-10px);
+    height: calc(87% - 10px);
     overflow-y: scroll;
 
     flex-direction: column;
@@ -154,10 +154,21 @@ a{
     font-weight: 600;
 }
 .listSearchUser, .suggestedUser{
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+.userResult_SearchHolderMes {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 5px auto;
+    background-color: var(--Color1);
+}
+.userResult_SearchHolderMes:hover{
+    background-color: var(--button1);
 }
 .hide {
     display: none;

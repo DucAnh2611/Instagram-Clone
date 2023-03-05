@@ -73,7 +73,7 @@ function hideBG() {
 
 function createDivLinkToMessage(userFind) {
     var userResult_SearchHolder = document.createElement("a");
-    userResult_SearchHolder.className = "userResult_SearchHolder messageSearch";
+    userResult_SearchHolder.className = "userResult_SearchHolderMes messageSearch";
     userResult_SearchHolder.href = `/message/to/${userFind.username_user}`;  
 
     var userResult_AvatarPart = document.createElement("div");
