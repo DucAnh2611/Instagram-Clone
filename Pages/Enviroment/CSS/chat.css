@@ -1,26 +1,4 @@
 
-html {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: 100%;
-}
-:root {
-    --Color1: #FEFEFF;
-    --Color2: #FBFBFA;
-    --Color3: #C6C6C7;
-    --Color4: #EFEFEF;
-    --Color5: rgb(0,0,0,0.2);
-    --Color6: rgb(0,0,0,1);
-    --Color7: rgb(0,0,0,0.5);
-    --ColorFacebook: #3951A4;
-    --button1: #EEEFEE;
-    --button2: #4CB5F8;
-    --text1: #272726;
-    --noti1: #FF3141;
-}
-*{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-}
 a{
     text-decoration: none;
     color: var(--text1);
@@ -68,20 +46,19 @@ a{
     min-height: 40px;
     width: 100%;
     padding: 0px 10px;
-    border-radius: 50px;
+    border-radius: 20px;
     border: 1px solid var(--Color3);
 
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
 .messageHolder{
     border: none;
     resize: none;
-    width: 70%;
-    min-height: 20px;
-    max-height: 70px;
+    width: 400px;
     height: 20px;
     overflow-y: scroll;
 
@@ -89,15 +66,34 @@ a{
     background-color: transparent;
     vertical-align: middle;
     color: var(--text1);
+    font-size: 1.5vh;
 }
 .messageHolder::placeholder{
     color: var(--Color3);
+    display: flex;
+    align-items: center;
 }
 .messageHolder:focus{
     outline: none;
 }
 .messageHolder:focus .messageHolder::placeholder{
     color: var(--Color3);
+}
+.iconSend{
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.1s;
+}
+.iconSend:hover{
+    opacity: .5;
+    cursor: pointer;
+}
+.iconSend > img{
+    height: 20px;
 }
 .sendMessage{
     background-color: transparent;
@@ -113,8 +109,86 @@ a{
     color: var(--ColorFacebook);
     transform: scale(0.7);
 }
+.divListFuncForAline{
+    height: 100%;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
+}
+.aFuncInList{
+    position: relative;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    margin: 0 2.5px;
+    opacity: .5;
+}
 
-
+.optionMessageHolder{
+    position: absolute;
+    height: fit-content;
+    min-height: 30px;
+    width: 120px;
+    top: 0;
+    left: 50%;
+    background-color: var(--text1);
+    border-radius: 10px;
+    transform: translate(-50%, -100%);
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.optionMessageHolder::before{
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(135deg);
+    height: 0;
+    width: 0;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid var(--text1);
+    border-top: 15px solid var(--text1);
+    border-left: 15px solid transparent;
+    border-radius: 7px;
+}
+.optionMessage {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Color1);
+    z-index: 1;
+}
+.optionMessageText{
+    font-size: 1.2vh;
+}
+.optionMessage:hover{
+    cursor: pointer;
+    color: var(--Color3);
+}
+.iconAFuncInList{
+    width: 18px;
+    transition-duration: 0.1s;
+}
+.aFuncInList:hover  {
+    cursor: pointer;
+    background-color: var(--Color2);
+    opacity: 1;
+}
+.aFuncInList:hover >.iconAFuncInList {
+    transform: scale(1.1);
+}
 .chatALineHolder {
     width: calc(100%-20px);
     height: fit-content;
@@ -122,15 +196,13 @@ a{
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 .send{
     flex-direction: row-reverse;
-    padding-right: 20px;
 }
 .recieve{
     flex-direction: row;
-    padding-left: 20px;
 }
 .sendingText{
     position:absolute;
@@ -144,17 +216,29 @@ a{
     border-bottom: 5px solid transparent;
     border-right: 4px solid var(--Color3);
 }
+.timeDisplayHolder{
+    margin: 10px 0;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.timeDisplay{
+    font-size: 1.2vh;
+    color: var(--text1);
+}
 .textHolder{
     padding: 15px;
     min-height: 10px;
-    max-width: 250px;
+    max-width: 200px;
     min-width: 10px;
     background-color: var(--button1);
     border-radius: 25px;
     display: flex;
     align-items: center;
-    overflow: hidden;
     overflow-wrap: break-word;
+    position: relative;
 }
 .send > .textHolder {
     background-color: var(--button1);
@@ -163,11 +247,98 @@ a{
     background-color: var(--Color1);
     border: 1px solid var(--button1);
 }
+
+.send >.bottomText{
+    border-bottom-right-radius: 5px ;
+}
+.send >.middleText{
+    border-top-right-radius: 5px ;
+    border-bottom-right-radius: 5px ;
+}
+.send >.topText{
+    border-top-right-radius: 5px ;
+}
+
+.recieve >.bottomText{
+    border-bottom-left-radius: 5px ;
+}
+.recieve >.middleText{
+    border-top-left-radius: 5px ;
+    border-bottom-left-radius: 5px ;
+}
+.recieve >.topText{
+    border-top-left-radius: 5px ;
+}
+.avatarLineChatHolder, .avatarLineChatClip{
+    height: 100%;
+    width: fit-content;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.avatarLineChatClip{
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.avatarLineChat{
+    height: 30px;
+}
 .textChat{
     width: 100%;
     height: 100%;
     display: inline;
     font-size: 1.4vh;
+}
+.deleted{
+    color: var(--Color3);
+    font-style: italic  ;
+}
+.send > .textHolder > .deleted{
+    border-right: 3px solid var(--Color3);
+    padding-right: 5px;
+}
+.recieve > .textHolder > .deleted{
+    border-left: 3px solid var(--Color3);
+    padding-left: 5px;
+}
+.likeMessage{
+    position: absolute;
+    height: 15px;
+    width: 30px;
+    background-color: var();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -17px;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    background-color: var(--button1);
+    border: 3px solid var(--Color1);
+
+    display: flex;
+    align-items: center;
+    transition-duration: 0.2s;
+}
+.likeMessage:hover{
+    cursor: pointer;
+    background-color: var(--Color3);
+}
+.send > .textHolder > .likeMessage{
+    right: -12px;
+}   
+.recieve > .textHolder > .likeMessage{
+    left: 12px;
+}   
+.likedMessage{
+    height: 10px;
+}
+.countLikedMessage{
+    margin-left: 3px;
+    font-size: 1vh;
 }
 .accountReciever{
     display:flex;
@@ -182,6 +353,24 @@ a{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+.avatarRecieverHolder > .activeDiv{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    transform: translate(-50%, -50%);
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    border: 3px solid var(--Color1);
+    transition-duration: 0.2s;
+}
+.online{
+    background-color: var(--ColorOk);
+}
+.offline{
+    display: none;
 }
 .avatarRecieverClip{
     display:flex;
@@ -213,6 +402,117 @@ a{
     font-weight: bold;
     font-size: 1.7vh;
 }
-.fullnameRecieverText{
+.lastActiveUser{
     font-size: 1.4vh;
+}
+.popupLikerHolder{
+    position: absolute;
+    height: fit-content;
+    width: 450px;
+
+    background-color: var(--Color1);
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+
+    z-index: 5;
+    overflow: hidden    ;
+}
+.popupLiker{
+    height: fit-content;
+    width: 100%;
+}
+.titlePart{
+    position: relative;
+    height: 50px;
+    border-bottom: 1px solid var(--Color3);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.titlePart p{
+    font-weight: 600;
+    font-size: 1.7vh;
+}
+.titlePart button{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 15px;
+    width: 15px;
+    border: none;
+    background-color: transparent;
+}
+.titlePart button:hover {
+    cursor: pointer;
+}
+.titlePart button img {
+    max-height: 15px;
+}
+.bodyPart{
+    max-height: 280px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.aPersonHolder{
+    height: 70px;
+    width: 100%;
+    background-color: var(--Color1);
+    display: flex;
+    flex-direction: row;
+}
+.aPersonHolder:hover{
+    cursor: pointer;
+    background-color: var(--Color4);
+}
+.aPersonHolder:hover > .activeDiv {
+    border-color: var(--Color4);
+}
+.aPersonAvatarHolder, .aPersonNameHolder, .aPersonReactHolder{
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+.aPersonAvatarHolder, .aPersonReactHolder{
+    flex: 2%;
+    position: relative;
+    align-items: center;
+}
+.aPersonAvatarClip, .aPersonReactClip{
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.aPersonAvatarClip > img {
+    height: 100%;
+}
+.aPersonNameHolder{
+    flex: 44%;
+    flex-direction: column;
+}
+.aPersonNameHolder > :first-child {
+    font-weight: bold;
+    font-size: 1.6vh;
+}
+.aPersonNameHolder > :last-child {
+    font-size: 1.4vh;
+}
+.aPersonReactClip{
+    height: 20px;
+    width: 20px;
+    background-color: var(--button1);
+    box-shadow: 0 0 5px var(--noti1);
+}
+.aPersonReactClip > img {
+    width: 10px;
 }

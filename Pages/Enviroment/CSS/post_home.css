@@ -4,16 +4,19 @@
 }
 
 .onePostInList{
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: column;
     padding-bottom: 20px ;
-    border-bottom: 2px solid var(--Color3);
-    background-color: var(--Color1);
+    background-color: var(--Color2);
     border-radius: 10px;
-    box-shadow: 0px 0px 10px var(--Color3);
+    transition-duration: .1s;
+}
+.onePostInList:hover {
+    background-color: var(--Color1);
+    box-shadow: 0px 0px 20px var(--Color3);
 }
 .headerPost{
     height: 60px;
@@ -70,9 +73,10 @@
     height: fit-content;
 }
 .contentPostHolder{
+    min-height: 500px;
+    min-width: 500px;
     position: relative;
     width: 100%;
-    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -213,19 +217,29 @@
     margin-top: 10px;
     padding-bottom: 10px;
 }
-.addCommentToPost{
-    height: 20px;
-    max-height: 50px;
-    width: 60%;
+.addCommentToPost[contenteditable]:empty::before{
+    content: "Add a comment";
+    color: var(--Color3);
+    font-size: 1.5vh;
+}
+.addCommentToPost[contenteditable]{
+    height: fit-content;
+    max-height: 100px;
+    width: 90%;
 
     border: none;
     resize: none;
+    overflow-y: scroll;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.addCommentToPost:focus{
+.addCommentToPost[contenteditable]:hover{
+    cursor:text;
+}
+.addCommentToPost[contenteditable]:focus{
     outline: none;
 }
 .postCommentPost{
+    width: 10%;
     color: var(--button2);
     font-weight: bold;
     font-size: 1.5vh;
@@ -234,10 +248,10 @@
     cursor: pointer;
 }
 
-.hide {
+.hidebtn {
     display: none;
 }
 
-.show{
+.showbtn{
     display: block;
 }

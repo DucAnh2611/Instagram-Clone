@@ -9,19 +9,42 @@
     cursor: pointer;
     background-color: var(--button1);
 }
-.aPersonChat:hover .avatarClipHolder {
+.aPersonChat:hover .avatarClipHolder{
     transform: scale(1.05);
+}
+.aPersonChat:hover .activeDiv{
+    border-color: var(--button1);
+    transform: translate(-50%, -50%) scale(1.05);
+
 }
 .avatarChatHolder, .nameAndFullnameHolder, .avatarClipHolder{
     display: flex;
 }
+.activeDiv{
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    transform: translate(-50%, -50%);
+    height: 13px;
+    width: 13px;
+    border-radius: 100%;
+    border: 3px solid var(--Color1);
+    transition-duration: 0.2s;
+}
+.online{
+    background-color: var(--ColorOk);
+}
+.offline{
+    display: none;
+}
 .avatarChatHolder{
-    flex: 5%;
+    position: relative;
+    flex: 1%;
     align-items: center;
     justify-content: center;
 }
 .nameAndFullnameHolder{
-    flex: 45%;
+    flex: 49%;
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
@@ -30,7 +53,7 @@
     font-size: 1.5vh;
 }
 .nameText{
-    font-weight: 600;
+    font-weight: bold;
 }
 .avatarClipHolder{
     height: 50px;

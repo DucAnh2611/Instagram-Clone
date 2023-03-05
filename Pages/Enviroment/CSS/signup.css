@@ -164,6 +164,17 @@ body{
     outline: none;
     border: 1px solid var(--Color5);
 }
+.stateSignup{
+    height: 25px;
+    width: 100%;
+
+    border-radius: 5px;
+    color: var(--noti1);
+    font-size: 1.3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .term{
     height: 100px;
     width: 90%;
@@ -184,6 +195,9 @@ body{
     margin-top: 10px;
     color: var(--Color1);
     font-weight: 600;
+}
+.submit-signup:disabled {
+    opacity: .4;
 }
 .submit-signup:hover {
     cursor: pointer;

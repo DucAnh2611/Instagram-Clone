@@ -94,6 +94,17 @@ body{
     outline: none;
     transition-duration: 0.2s;
 }
+.resultLogin{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2vh;
+    color: var(--noti1);
+    background-color: var(--Color2);
+    border-radius: 10px;
+    height: 30px;
+    width: 100%;
+}
 .username-Login:focus, .password-Login:focus{
     border: 1px solid var(--Color5);
 }
