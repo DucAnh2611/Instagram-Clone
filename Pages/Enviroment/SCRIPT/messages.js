@@ -3,8 +3,8 @@ async function updateInfoUser() {
 }
 updateInfoUser();
 function createPopupSearchUserChat() {
-    var btnCreateNewConverstaion = document.querySelector(".sendMessage");
-    if(btnCloseCreateNewConversation) {
+    var btnCreateNewConverstaion = document.querySelector(".sendMessageCrete");
+    if(btnCreateNewConverstaion) {
         btnCreateNewConverstaion.addEventListener("click", () => {
             document.querySelector(".searchUserToCreateConversation").classList.add("show")
             document.querySelector(".searchUserToCreateConversation").classList.remove("hide")

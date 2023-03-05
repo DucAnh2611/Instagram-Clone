@@ -1,3 +1,4 @@
+var socket = io();
 localStorage.clear();
 
 var submitSignupBtn =document.querySelector(".submit-signup");
@@ -44,7 +45,10 @@ submitSignupBtn.addEventListener("click", async ()=>{
         stateSignup.style.display = "flex";
         localStorage.setItem('usernameLogined', listInputFields[2].value);
         if(data.status == 5) {
-            window.location.href= `/home`;
+            socket.emit('loginAccount', {
+                username: localStorage.getItem('usernameLogined')
+            })
+            window.location.href= `/edit`;
         }
     });
 })

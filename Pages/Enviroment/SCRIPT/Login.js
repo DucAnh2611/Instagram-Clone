@@ -1,3 +1,5 @@
+var socket = io();
+
 localStorage.clear();
 const listPicture = document.querySelectorAll(".refresh");
 var currentPicIndex = 0;
@@ -38,6 +40,9 @@ submitBtn.addEventListener("click", async () => {
     .then((data) => {
         if(data.status == 1) {
             localStorage.setItem('usernameLogined', data.username);
+            socket.emit('loginAccount', {
+                username: localStorage.getItem('usernameLogined')
+            })
             window.location.href = "/home";
         }
         else {
