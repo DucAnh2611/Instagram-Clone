@@ -58,3 +58,9 @@ tên ảnh: 'username_user'_avatar
 ví dụ: username_user là admin1: admin1_avatar (Đổi tên ảnh nhé, còn link ở avatar_path thì để im đó)
 còn nếu không muốn thay thì cứ để là: "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png" ở phần avatar_path
 ``` 
+* Lưu ý 4: Không được điền thông tin userid, phone, email giống bất gì user nào khác, để dễ hơn thì đặt theo dạng user_+userid:
+```bash
+userid:10
+=> "email": user_10@gmail.com
+=> "phone": "0000000010"
+``` 
