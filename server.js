@@ -178,7 +178,7 @@ app.post('/message/to/:username_rev',async function(request,response) {
 
   let userChat = new Client(clientConnect);
   await userChat.connect();
-  var clientUser = await userChat.query(`SELECT username_user,fullname,avatar_path FROM user_profile WHERE username_user='${request.params.username_rev}'`);
+  var clientUser = await userChat.query(`SELECT username_user,fullname,avatar_path, activenow, lastactive FROM user_profile WHERE username_user='${request.params.username_rev}'`);
   await userChat.end();
 
   response.status(200).json(clientUser.rows[0])
@@ -191,7 +191,11 @@ app.post('/message/to/:username_rev/getChat', async function(request,response) {
   let clientRetrieve = new Client(clientConnect);
   await clientRetrieve.connect();
 
-  var selectAllMessage = await clientRetrieve.query(`SELECT up1.username_user as senderName, up1.avatar_path as senderAvatar, up2.username_user as recieverName,messageid, messageContent, messagesendtime, messageid FROM (user_profile as up1 INNER JOIN message_user as mu ON up1.userid = mu.senderid INNER JOIN user_profile as up2 on mu.recieverid = up2.userid) WHERE ( (up1.username_user='${request.body.username}' AND up2.username_user = '${request.params.username_rev}') OR (up1.username_user='${request.params.username_rev}' AND up2.username_user = '${request.body.username}') ) ORDER BY messagesendtime`);
+  var selectAllMessage = await clientRetrieve.query(`
+  SELECT up1.username_user as senderName, up1.avatar_path as senderAvatar, up2.username_user as recieverName,messageid, messageContent, messagesendtime, messageid, messagestate, (SELECT COUNT(*) FROM message_like WHERE messageid = mu.messageid) as count
+  FROM (user_profile as up1 INNER JOIN message_user as mu ON up1.userid = mu.senderid INNER JOIN user_profile as up2 on mu.recieverid = up2.userid) 
+  WHERE ( (up1.username_user='${request.body.username}' AND up2.username_user = '${request.params.username_rev}') OR (up1.username_user='${request.params.username_rev}' AND up2.username_user = '${request.body.username}') ) 
+  ORDER BY messagesendtime`);
 
   await clientRetrieve.end();
 
@@ -204,30 +208,32 @@ app.post('/message/to/:username_rev/sendMessage', async function(request,respons
   var maxIndexMessage = await clientSendMessage.query(`(SELECT COUNT(*) FROM message_user)`);
   var idSender = await clientSendMessage.query(`SELECT userid FROM user_profile WHERE (username_user = '${request.body.username}' )`);
   var idReciever = await clientSendMessage.query(`SELECT userid FROM user_profile WHERE (username_user = '${request.params.username_rev}' )`);
-  var sendMessage = await clientSendMessage.query(`INSERT INTO message_user VALUES (DEFAULT, ${parseInt(idSender.rows[0].userid)}, ${parseInt(idReciever.rows[0].userid)}, '${request.body.message}', '${request.body.sendTime}')`);
+  var sendMessage = await clientSendMessage.query(`INSERT INTO message_user VALUES (DEFAULT, ${parseInt(idSender.rows[0].userid)}, ${parseInt(idReciever.rows[0].userid)}, '${request.body.message}', '${request.body.sendTime}', 'true')`);
 
   await clientSendMessage.end();
 
   response.status(200).json(sendMessage);
 });
-app.post('/message/to/:username/likeMessage', async function(request,response) {
+app.post('/message/to/:username_rev/listLikeMessage', async function(request,response) {
   var messageid = request.query.messageid;
-  var usernameLike = request.query.username;
+  let listLikeMessage = new Client(clientConnect);
+  await listLikeMessage.connect();
+  
+  var listLike = await listLikeMessage.query(`
+  SELECT up.username_user AS username, up.avatar_path AS avatar_path, up.activenow AS isactive, up.lastactive AS lastactive
+  FROM message_like AS ml INNER JOIN user_profile AS up ON ml.likerid = up.userid
+  WHERE messageid = ${messageid}
+  `);
 
-  var likeMessage = new Client(clientConnect);
-  await likeMessage.connect();
-  var userLikeIdDb = await likeMessage.query(`SELECT userid FROM user_profile WHERE username_user = '${usernameLike}'`);
-  var userLikeId = userLikeIdDb.rows[0].userid;
+  await listLikeMessage.end();
 
-  var insertLike = await likeMessage.query(`INSERT INTO message_like VALUES (DEFAULT, ${messageid}, ${userLikeId})`);
-  await likeMessage.end();
-  response.status(200).json({status: "ok"})
+  response.status(200).json(listLike.rows);
 });
 app.post('/message/recentChat', async function(request,response) {
   let clientRetrieve = new Client(clientConnect);
   await clientRetrieve.connect();
 
-  var selectAllMessage = await clientRetrieve.query(` SELECT DISTINCT up1.username_user as senderName, up1.avatar_path as senderAva, up1.fullname as senderFullname, up2.username_user as recieverName, up2.avatar_path as recieverAva, up2.fullname as recieverFullname FROM (user_profile as up1 INNER JOIN message_user as mu ON up1.userid = mu.senderid INNER JOIN user_profile as up2 on mu.recieverid = up2.userid) WHERE (up1.username_user='${request.body.username}' OR up2.username_user = '${request.body.username}') `);
+  var selectAllMessage = await clientRetrieve.query(` SELECT DISTINCT up1.username_user as senderName, up1.avatar_path as senderAva, up1.fullname as senderFullname, up1.activenow as senderActive, up1.lastactive as senderLastActive, up2.username_user as recieverName, up2.avatar_path as recieverAva, up2.fullname as recieverFullname, up2.activenow as recieverActive, up2.lastactive as recieverLastActive FROM (user_profile as up1 INNER JOIN message_user as mu ON up1.userid = mu.senderid INNER JOIN user_profile as up2 on mu.recieverid = up2.userid) WHERE (up1.username_user='${request.body.username}' OR up2.username_user = '${request.body.username}') `);
 
   await clientRetrieve.end();
 
@@ -237,7 +243,7 @@ app.post('/message/recentChat', async function(request,response) {
 io.on('connection', (socket) =>{
   socket.on('chat message', (messageSent) => {
     io.emit('chat message', messageSent);
-  })
+  });
   socket.on('noticePost', async (info) =>{
     let likePost = new Client(clientConnect);
     await likePost.connect();
@@ -271,7 +277,7 @@ io.on('connection', (socket) =>{
       postid: info.postid,
       likeTime: (new Date(info.likeTime)).toUTCString()
     })
-  })
+  });
   socket.on('noticeFollow',async (info) => {
     let followUser = new Client(clientConnect);
     await followUser.connect();
@@ -284,6 +290,60 @@ io.on('connection', (socket) =>{
 
     io.emit('noticeFollow', {
       username_rec: usernameRec.rows[0].username_user
+    })
+  });
+  socket.on('likeMessage', async (message) => {
+    var likeMessage = new Client(clientConnect);
+    await likeMessage.connect();
+    var userLikeIdDb = await likeMessage.query(`SELECT userid FROM user_profile WHERE username_user = '${message.usernameLike}'`);
+    var userLikeId = userLikeIdDb.rows[0].userid;
+  
+    var likeMessageCount = await likeMessage.query(`SELECT COUNT(*) FROM message_like WHERE (messageid = ${message.messageid} AND likerid = ${userLikeId})`);
+    if(likeMessageCount.rows[0].count > 0){
+      var insertLike = await likeMessage.query(`DELETE FROM message_like WHERE (messageid = ${message.messageid} AND likerid = ${userLikeId})`);
+    }else {
+      var insertLike = await likeMessage.query(`INSERT INTO message_like VALUES (DEFAULT, ${message.messageid}, ${userLikeId})`);
+    }
+
+
+    var countLikeMessage = await likeMessage.query(`SELECT COUNT(*) FROM message_like WHERE messageid = ${message.messageid}`);
+    await likeMessage.end();
+    io.emit('likeMessage', {
+      countLike: countLikeMessage.rows[0].count,
+      messageid: message.messageid
+    })
+  });
+  socket.on('deleteMes', async (message)=>{
+    var deleteMes = new Client(clientConnect);
+    await deleteMes.connect();
+    var unsend = await deleteMes.query(`UPDATE message_user SET messagestate = 'false' WHERE messageid = ${message.messageid}`)
+    await deleteMes.end();
+    io.emit('deleteMes', {
+      messageid: message.messageid
+    })
+  });
+  socket.on('loginAccount', async (user) =>{
+    var loginAccount = new Client(clientConnect);
+    await loginAccount.connect();
+    var loginToAccount = await loginAccount.query(`UPDATE user_profile 
+    SET activenow = 'true', lastActive='${(new Date()).toUTCString()}'
+    WHERE username_user = '${user.username}' `);
+    await loginAccount.end();
+    io.emit('loginAccount', {
+      username: user.username,
+      state: "ok"
+    })
+  })
+  socket.on('offlineAccount', async (user) =>{
+    var loginAccount = new Client(clientConnect);
+    await loginAccount.connect();
+    var loginToAccount = await loginAccount.query(`UPDATE user_profile 
+    SET activenow = 'false',  lastActive='${(new Date()).toUTCString()}'
+    WHERE username_user = '${user.username}' `);
+    await loginAccount.end();
+    io.emit('offlineAccount', {
+      username: user.username,
+      state: "ok"
     })
   })
 });
@@ -299,8 +359,8 @@ app.post('/search', async function(request, respone){
 })
 var fixDate = (needFix) => {
   var newDate = (new Date(needFix)).toISOString().substring(0, 10);
-  var newDay = String(parseInt(newDate[newDate.length-1])+1);
-  return newDate.slice(0,-1) + newDay;
+  var newDay = String(parseInt(newDate[newDate.length-1]));
+  return (new Date(needFix)).toUTCString();
 }
 //Trang thay doi thong tin nguoi dung
 app.get('/edit',function (request, response) {
@@ -353,25 +413,62 @@ app.post('/edit/getDataUser' , async function(request, response) {
       
     response.status(200).json(userInforFetch);
 });
+app.post('/edit/activePhone' , async function(request, response) {
+  var phonenum = request.query.phonenumber;
+  var username = request.query.username;
+  var activePhone = new Client(clientConnect);
+  await activePhone.connect();
+  var activePhonenumber = await activePhone.query(`UPDATE user_profile SET phone='${phonenum}', phoneActive='true' WHERE username_user = '${username}'`)
+  await activePhone.end();
+  response.status(200).json({status: "ok"});
+});
+app.post('/edit/checkPhone' , async function(request, response) {
+  var username = request.query.username;
+  var phonenum = request.query.phone;
+  var checkPhone = new Client(clientConnect);
+  await checkPhone.connect();
+  var activePhonenumber = await checkPhone.query(`SELECT COUNT(*) FROM user_profile WHERE phone = '${phonenum}' AND username_user <> '${username}'`)
+  await checkPhone.end();
+  if(activePhonenumber.rows[0].count ==0) {
+    response.status(200).json({status: "ok"});
+  }
+  else {response.status(200).json({status: "no ok"});}
+});
+app.post('/edit/checkMail' , async function(request, response) {
+  var username = request.query.username;
+  var email = request.query.mail;
+  var checkMail = new Client(clientConnect);
+  await checkMail.connect();
+  var checkEmail = await checkMail.query(`SELECT COUNT(*) FROM user_profile WHERE email = '${email}' AND username_user <> '${username}'`)
+  await checkMail.end();
+  if(checkEmail.rows[0].count ==0) {
+    response.status(200).json({status: "ok"});
+  }
+  else {response.status(200).json({status: "no ok"});}
+});
 app.post('/edit/authEdit',async function(request, respone) {
   var usernameBefore = request.body.beforeUsername;
   var publicIdLastPic = `${usernameBefore}_avatar`;
+  var clientUser = new Client(clientConnect);
+  await clientUser.connect();
+  var getUserId = await clientUser.query(`
+    SELECT userid
+    FROM user_profile
+    WHERE username_user = '${usernameBefore}'
+  `);
+  await clientUser.end();
 
   if(usernameBefore != request.body.username) {
     let clientAllusername = new Client(clientConnect);
     await clientAllusername.connect();
     var getAllUsername = await clientAllusername.query(`
-      SELECT username_user
+      SELECT COUNT(*)
       FROM user_profile
-      WHERE username_user <> '${usernameBefore}'
+      WHERE username_user = '${request.body.username}' AND userid <> '${getUserId.rows[0].userid}'
     `);
     await clientAllusername.end();
     var sameUsername = false;
-    getAllUsername.rows.forEach(username => {
-      if(username.username_user == request.body.username) {
-        sameUsername = true;
-      }
-    })
+    if(getAllUsername.rows[0].count > 0) sameUsername = true;
 
     if(!sameUsername) {
       var newPicOldPublicId  = await cloudinary.url(`Instagram_Folder/${publicIdLastPic}`);
@@ -385,19 +482,51 @@ app.post('/edit/authEdit',async function(request, respone) {
       await clientUpdate.connect();
       var updateAvata = await clientUpdate.query(`UPDATE user_profile SET avatar_path='${newPicNewPublicId.secure_url}' WHERE (username_user='${usernameBefore}')`);
       await clientUpdate.end();
+
     }
     else{
        respone.status(200).json({status: "sameUsername"});
     }
 
   }
+  var differentNumber = false;
+  var checkMail = new Client(clientConnect);
+  await checkMail.connect();
+  var checkMailSame = await checkMail.query(`
+    SELECT COUNT(*)
+    FROM user_profile
+    WHERE email = '${request.body.email}' AND userid <> '${getUserId.rows[0].userid}'
+  `);
+  var checkPhoneSame = await checkMail.query(`
+    SELECT COUNT(*)
+    FROM user_profile
+    WHERE phone = '${request.body.phoneNumber}' AND userid <> '${getUserId.rows[0].userid}'
+  `);
+  var checkPhoneSameActive = await checkMail.query(`
+    SELECT phone
+    FROM user_profile
+    WHERE userid = '${getUserId.rows[0].userid}'
+  `)
+  await checkMail.end();
+  if(checkPhoneSameActive.rows[0].phone != request.body.phoneNumber){
+    differentNumber = true;
+  }
 
-  let clientUpdateUser = new Client(clientConnect);
-  await clientUpdateUser.connect();
-  var updateUser = await clientUpdateUser.query(`UPDATE user_profile SET username_user='${request.body.username}', email='${request.body.email}', phone='${request.body.phoneNumber}', dateOfBirth='${request.body.dateOfBirth}', gender='${request.body.gender}', fullname= N'${request.body.fullname}', bio=N'${request.body.bio}' WHERE (username_user='${usernameBefore}')`); 
-  await clientUpdateUser.end();
-
-  respone.status(200).json({status: "ok", newUsernameLogined: request.body.username })
+  if(checkMailSame.rows[0].count > 0) {
+    respone.status(200).json({status: "sameEmail"});
+  }
+  else if(checkPhoneSame.rows[0].count > 0) {
+    respone.status(200).json({status: "samePhone"});
+  }else {
+    let clientUpdateUser = new Client(clientConnect);
+    await clientUpdateUser.connect();
+    var updateUser = await clientUpdateUser.query(`UPDATE user_profile SET username_user='${request.body.username}', email='${request.body.email}', phone='${request.body.phoneNumber}', dateOfBirth='${(new Date(request.body.dateOfBirth)).toUTCString()}', gender='${request.body.gender}', fullname= N'${request.body.fullname}', bio=N'${request.body.bio}' WHERE (username_user='${usernameBefore}')`); 
+    if(differentNumber) {
+      var updateActiveNumber = await clientUpdateUser.query(`UPDATE user_profile SET phoneactive = 'false' WHERE (username_user='${request.body.username}')`); 
+    }
+    await clientUpdateUser.end();
+    respone.status(200).json({status: "ok", newUsernameLogined: request.body.username })
+  }
 })
 
 //Trang thay doi mat khau
@@ -547,30 +676,11 @@ app.post('/singupInfo', function(request, response) {
         statusSignUp = 5;
         let clientInsertUser = new Client(clientConnect);
         await clientInsertUser.connect();
-        var date_ob = new Date();
-
-        let date = ("0" + date_ob.getDate()).slice(-2);
-        let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-
-        // current year
-        let year = date_ob.getFullYear();
-
-        // // current hours
-        // let hours = date_ob.getHours();
-
-        // // current minutes
-        // let minutes = date_ob.getMinutes();
-
-        // // current seconds
-        // let seconds = date_ob.getSeconds();
-        
-        var birthdayDefault = `${year}-${month}-${date}`;
-        var createDate = birthdayDefault;
         var emailUser = "";
         var phoneUser = "";
         var activePhone = false;
 
-        var pathDefault = "https://res.cloudinary.com/dxdmbosbl/image/upload/v1675775392/Instagram_Folder/default_ava_vhntn9.png";
+        var pathDefault = "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png";
         var uploadDefaultPic= await cloudinary.uploader.upload(pathDefault, {
           public_id: `${username}_avatar`,
           folder: "Instagram_Folder"
@@ -588,7 +698,7 @@ app.post('/singupInfo', function(request, response) {
             break;
         }
         if(statusSignUp == 5){
-          var insertUser = await clientInsertUser.query(`INSERT INTO user_profile VALUES ( DEFAULT, '${username}', '${password}', '${emailUser}', '${phoneUser}', ${activePhone}, N'${fullname}', '${birthdayDefault}', 'Prefer not to say', '${createDate}', '${uploadDefaultPic.secure_url}', '' )`);
+          var insertUser = await clientInsertUser.query(`INSERT INTO user_profile VALUES ( DEFAULT, '${username}', '${password}', '${emailUser}', '${phoneUser}', ${activePhone}, N'${fullname}', '${(new Date()).toUTCString()}', 'Prefer not to say', '${(new Date()).toUTCString()}', '${uploadDefaultPic.secure_url}', '', 'true', '${(new Date()).toUTCString()}' )`);
           await clientInsertUser.end();
         }
        
