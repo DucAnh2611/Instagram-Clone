@@ -2,12 +2,12 @@
     "user1": {
         "userInfor": {
             "userid": 1,
-            "username_user": "",
-            "password_user": "",
-            "email": "@gmail.com",
-            "phone": "000000000",
+            "username_user": "user1",
+            "password_user": "1",
+            "email": "a@gmail.com",
+            "phone": "0123456789",
             "phoneActive": false,
-            "fullName": "",
+            "fullName": "Nguyen Van A",
             "dateOfBirth": "2002-11-26T07:00:00+07:00",
             "gender": "Prefer not to say",
             "createDate": "2023-03-04T07:00:00+07:00",
@@ -19,13 +19,13 @@
     },
     "user2": {
         "userInfor": {
-            "userid": 1,
-            "username_user": "",
-            "password_user": "",
-            "email": "@gmail.com",
-            "phone": "000000000",
+            "userid": 2,
+            "username_user": "user2",
+            "password_user": "1",
+            "email": "b@gmail.com",
+            "phone": "0123456788",
             "phoneActive": false,
-            "fullName": "",
+            "fullName": "Nguyen Van B",
             "dateOfBirth": "2002-11-26T07:00:00+07:00",
             "gender": "Prefer not to say",
             "createDate": "2023-03-04T07:00:00+07:00",
@@ -37,13 +37,13 @@
     },
     "user3": {
         "userInfor": {
-            "userid": 1,
-            "username_user": "",
-            "password_user": "",
-            "email": "@gmail.com",
-            "phone": "000000000",
+            "userid": 3,
+            "username_user": "user3",
+            "password_user": "1",
+            "email": "c@gmail.com",
+            "phone": "0123456777",
             "phoneActive": false,
-            "fullName": "",
+            "fullName": "Banh Van A",
             "dateOfBirth": "2002-11-26T07:00:00+07:00",
             "gender": "Prefer not to say",
             "createDate": "2023-03-04T07:00:00+07:00",
@@ -55,13 +55,13 @@
     },
     "user4": {
         "userInfor": {
-            "userid": 1,
-            "username_user": "",
-            "password_user": "",
-            "email": "@gmail.com",
-            "phone": "000000000",
+            "userid": 4,
+            "username_user": "user4",
+            "password_user": "1",
+            "email": "d@gmail.com",
+            "phone": "0123456666",
             "phoneActive": false,
-            "fullName": "",
+            "fullName": "Banh Thi A",
             "dateOfBirth": "2002-11-26T07:00:00+07:00",
             "gender": "Prefer not to say",
             "createDate": "2023-03-04T07:00:00+07:00",
@@ -71,5 +71,131 @@
             "lastActive": "2023-03-05T07:00:00+07:00"
         }
     }
+      "user5": {
+        "userInfor": {
+            "userid": 5,
+            "username_user": "user5",
+            "password_user": "1",
+            "email": "e@gmail.com",
+            "phone": "0123456798",
+            "phoneActive": false,
+            "fullName": "Nguyen Thi A",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    }
+    "user6": {
+        "userInfor": {
+            "userid": 6,
+            "username_user": "user6",
+            "password_user": "1",
+            "email": "f@gmail.com",
+            "phone": "0123456987",
+            "phoneActive": false,
+            "fullName": "Nguyen Thi B",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    }
+    "user7": {
+        "userInfor": {
+            "userid": 7,
+            "username_user": "user7",
+            "password_user": "1",
+            "email": "g@gmail.com",
+            "phone": "0123456978",
+            "phoneActive": false,
+            "fullName": "Nguyen Thi C",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    }
+    "user8": {
+        "userInfor": {
+            "userid": 8,
+            "username_user": "user8",
+            "password_user": "1",
+            "email": "h@gmail.com",
+            "phone": "0123456679",
+            "phoneActive": false,
+            "fullName": "Nguyen Van C",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    }
+    "user9": {
+        "userInfor": {
+            "userid": 9,
+            "username_user": "user9",
+            "password_user": "1",
+            "email": "i@gmail.com",
+            "phone": "0123456123",
+            "phoneActive": false,
+            "fullName": "Nguyen Van D",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    }
+    "user10": {
+            "userInfor": {
+                "userid": 10,
+                "username_user": "user10",
+                "password_user": "1",
+                "email": "k@gmail.com",
+                "phone": "0123456124",
+                "phoneActive": false,
+                "fullName": "Nguyen Van E",
+                "dateOfBirth": "2002-11-26T07:00:00+07:00",
+                "gender": "Prefer not to say",
+                "createDate": "2023-03-04T07:00:00+07:00",
+                "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+                "bio": "",
+                "activenow": false,
+                "lastActive": "2023-03-05T07:00:00+07:00"
+            }
+       }
+    "user11": {
+            "userInfor": {
+                "userid": 11,
+                "username_user": "user11",
+                "password_user": "1",
+                "email": "l@gmail.com",
+                "phone": "0123456125",
+                "phoneActive": false,
+                "fullName": "Lo Thi A",
+                "dateOfBirth": "2002-11-26T07:00:00+07:00",
+                "gender": "Prefer not to say",
+                "createDate": "2023-03-04T07:00:00+07:00",
+                "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+                "bio": "",
+                "activenow": false,
+                "lastActive": "2023-03-05T07:00:00+07:00"
+            }
+       }
 }
 
