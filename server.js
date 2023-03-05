@@ -352,7 +352,7 @@ io.on('connection', (socket) =>{
 app.post('/search', async function(request, respone){
   let clientUserLoad = new Client(clientConnect);
   await clientUserLoad.connect();
-  var clientUser = await clientUserLoad.query(`SELECT username_user,fullname,avatar_path FROM user_profile WHERE ((username_user LIKE '%${request.query.key}%' OR fullname LIKE '%${request.query.key}%') )`);
+  var clientUser = await clientUserLoad.query(`SELECT username_user,fullname,avatar_path FROM user_profile WHERE (username_user LIKE '%${request.query.key}%' OR fullname LIKE '%${request.query.key}%') ORDER BY userID`);
   await clientUserLoad.end();
 
   respone.status(200).json(clientUser.rows);
