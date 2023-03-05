@@ -15,6 +15,12 @@
             "bio": "",
             "activenow": false,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2,
+            "followId2": 5,
+            "followId3": 3,
+            "followId4": 2
         }
     },
     "user2": {
@@ -33,6 +39,9 @@
             "bio": "",
             "activenow": false,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user3": {
@@ -51,6 +60,9 @@
             "bio": "",
             "activenow": true,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user4": {
@@ -69,6 +81,9 @@
             "bio": "",
             "activenow": true,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
       "user5": {
@@ -87,6 +102,9 @@
             "bio": "",
             "activenow": false,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user6": {
@@ -105,6 +123,9 @@
             "bio": "",
             "activenow": false,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user7": {
@@ -123,6 +144,9 @@
             "bio": "",
             "activenow": true,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user8": {
@@ -141,6 +165,9 @@
             "bio": "",
             "activenow": false,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user9": {
@@ -159,43 +186,52 @@
             "bio": "",
             "activenow": false,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user10": {
-            "userInfor": {
-                "userid": 10,
-                "username_user": "user10",
-                "password_user": "1",
-                "email": "user10@gmail.com",
-                "phone": "0123456124",
-                "phoneActive": true,
-                "fullName": "Nguyen Van E",
-                "dateOfBirth": "2002-01-26T07:00:00+07:00",
-                "gender": "Prefer not to say",
-                "createDate": "2023-03-04T07:00:00+07:00",
-                "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
-                "bio": "",
-                "activenow": true,
-                "lastActive": "2023-03-05T07:00:00+07:00"
-            }
+        "userInfor": {
+            "userid": 10,
+            "username_user": "user10",
+            "password_user": "1",
+            "email": "user10@gmail.com",
+            "phone": "0123456124",
+            "phoneActive": true,
+            "fullName": "Nguyen Van E",
+            "dateOfBirth": "2002-01-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": true,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
+        }
     },
     "user11": {
-            "userInfor": {
-                "userid": 11,
-                "username_user": "user11",
-                "password_user": "1",
-                "email": "user11@gmail.com",
-                "phone": "0123456125",
-                "phoneActive": true,
-                "fullName": "Lo Thi A",
-                "dateOfBirth": "2002-03-26T07:00:00+07:00",
-                "gender": "Prefer not to say",
-                "createDate": "2023-03-04T07:00:00+07:00",
-                "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
-                "bio": "",
-                "activenow": false,
-                "lastActive": "2023-03-05T07:00:00+07:00"
-            }
+        "userInfor": {
+            "userid": 11,
+            "username_user": "user11",
+            "password_user": "1",
+            "email": "user11@gmail.com",
+            "phone": "0123456125",
+            "phoneActive": true,
+            "fullName": "Lo Thi A",
+            "dateOfBirth": "2002-03-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
+        }
     },
     "user12": {
         "userInfor": {
@@ -213,6 +249,9 @@
             "bio": "",
             "activenow": false,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user13": {
@@ -231,6 +270,9 @@
             "bio": "",
             "activenow": true,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user14": {
@@ -249,6 +291,9 @@
             "bio": "",
             "activenow": true,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     },
     "user15": {
@@ -267,6 +312,9 @@
             "bio": "",
             "activenow": true,
             "lastActive": "2023-03-05T07:00:00+07:00"
+        },
+        "follow": {
+            "followId1": 2
         }
     }
 }
