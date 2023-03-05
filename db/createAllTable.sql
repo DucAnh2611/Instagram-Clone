@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS commentOfPost;
 DROP TABLE IF EXISTS photo;
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS Follow;
+DROP TABLE IF EXISTS message_like;
 DROP TABLE IF EXISTS message_user;
 DROP TABLE IF EXISTS User_Profile;
 
@@ -15,11 +16,13 @@ CREATE TABLE IF NOT EXISTS User_Profile (
 	phone varchar(10),
 	phoneActive bool,
 	fullName varchar(50) not null,
-	dateOfBirth date,
+	dateOfBirth timestamp with time zone,
 	gender varchar(20),
-	createDate date not null,
+	createDate timestamp with time zone not null,
 	avatar_path varchar(500),
 	bio varchar(150),
+	activenow bool not null,
+	lastActive timestamp with time zone not null,
 	
 	primary key (userID)
 );
@@ -29,10 +32,21 @@ CREATE TABLE IF NOT EXISTS message_user (
 	recieverId int not null,
 	messageContent varchar(200) not null,
 	messageSendTime timestamp with time zone not null,
+	messageState bool not null,
+	messageSeen bool not null,
 	
 	foreign key (senderId) references user_profile(userId),
 	foreign key (recieverId) references user_profile(userId),
 	primary key (messageId)
+);
+CREATE TABLE IF NOT EXISTS message_like (
+	likeMessageId serial,
+	messageId serial,
+	likerId int not null,
+	
+	foreign key (likerId) references user_profile(userId),
+	foreign key (messageId) references message_user(messageId),
+	primary key (likeMessageId)
 );
 CREATE TABLE IF NOT EXISTS Follow (
 	UserId int not null,
