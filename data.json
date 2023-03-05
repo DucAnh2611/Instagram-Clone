@@ -250,6 +250,24 @@
             "activenow": true,
             "lastActive": "2023-03-05T07:00:00+07:00"
         }
+    },
+    "user15": {
+        "userInfor": {
+            "userid": 15,
+            "username_user": "user15",
+            "password_user": "1",
+            "email": "user15@gmail.com",
+            "phone": "0922426425",
+            "phoneActive": true,
+            "fullName": "Nguyen Hoang K",
+            "dateOfBirth": "2002-12-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": true,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
     }
 }
 
