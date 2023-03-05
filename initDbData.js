@@ -16,7 +16,7 @@ Object.keys(userList).map(async (user) => {
     await insertTableUser.connect();
     var insert = await insertTableUser.query(`
         INSERT INTO user_profile
-        VALUES (${userInfor.userid}, '${userInfor.username_user}', '${userInfor.password_user}', '${userInfor.email}', '${userInfor.phone}', '${userInfor.phoneActive}', N'${userInfor.fullName}', '${userInfor.dateOfBirth}', '${userInfor.gender}', '${userInfor.createDate}', '${userInfor.avatar_path}', '${userInfor.bio}', '${userInfor.activenow}', '${userInfor.lastActive}')
+        VALUES (${userInfor.userid}, '${userInfor.username_user}', '${userInfor.password_user}', '${userInfor.email}', '${userInfor.phone}', '${userInfor.phoneActive}', N'${userInfor.fullName}', '${userInfor.dateOfBirth}', '${userInfor.gender}', '${userInfor.createDate}', '${userInfor.avatar_path}', N'${userInfor.bio}', '${userInfor.activenow}', '${userInfor.lastActive}')
     `);
     await insertTableUser.end();
 })
