@@ -9,7 +9,10 @@
     <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/Scrollbar.css">
     <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/post_home.css">
     <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/createPost.css">
+
     <link rel="icon" href="/Pages/Enviroment/600px-Instagram_icon.png" type="image/icon type">
+
+    <script src="/Pages/Enviroment/Script/logined.js" defer></script>
     <script src="/Pages/Enviroment/Script/Instagram.js" defer></script>
     <script src="/Pages/Enviroment/Script/search.js" defer></script>
     <script src="/Pages/Enviroment/Script/moreBtn.js" defer></script>
@@ -118,12 +121,12 @@
 
                         </div>
                         <div class="moreSide secondSide">
-                            <div class="aFunctionsInSide">
+                            <a class="aFunctionsInSide" href="/login">
                                 <p class="functionName">Switch Account</p>
-                            </div>
-                            <div class="aFunctionsInSide">
+                            </a>
+                            <a class="aFunctionsInSide" href="/login">
                                 <p class="functionName">Log out</p>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -179,7 +182,7 @@
             </div>
         </div>
     </div>
-    <div class="logOutPopUps">
+    <!-- <div class="logOutPopUps">
         <div class="textLogOut">
             <p class="firstTextLogOut">Logging out</p>
             <p class="secondTextLogOut">You need to log back in</p>
@@ -187,7 +190,7 @@
         <button class="btnLogOut">
             Log in
         </button>
-    </div>
+    </div> -->
     <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
     <script src="/Pages/Enviroment/Script/Loading.js"></script>
 </body>

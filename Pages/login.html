@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/login.css">
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/loading.css">
     <link rel="icon" href="/Pages/Enviroment/600px-Instagram_icon.png" type="image/icon type">
     <title>Login - Instagram</title>
+    <script src="/Pages/Enviroment/Script/Login.js" defer></script>
 </head>
 <body>
     <div class="loginForm-Main">
@@ -28,16 +30,11 @@
                 <div class="mainLoginMethod">
                     <img src="/Pages/Enviroment/Instagram_logo.png" class="LoginForm-Logo">
                     <div class="userLogin">
-                        <!-- <% if (statusLogin == 1) { %>
-                            <p class="loginFailed">Không tồn tại tài khoản</p>
-                        <% } %> -->
                         <input class="username-Login" type="text" name="username" id="username" placeholder="Username" required>
-                        <!-- <% if (statusLogin == 2) { %>
-                            <p class="loginFailed">Sai mật khẩu</p>
-                        <% } %> -->
                         <input type="password" class="password-Login" name="password" id="password" placeholder="Password" required>
                     </div>
                     <input type="submit" value="Log in" class="submit-login">
+                    <p class="resultLogin"> </p>
                 </div>
                 <div class="divideMethod">
                     <p class="divideText">OR</p>
@@ -70,6 +67,6 @@
         </div>
     </div>
     <script src="/Pages/Enviroment/Script/Loading.js"></script>
-    <script src="/Pages/Enviroment/Script/Login.js"></script>
+    <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
 </body>
 </html>

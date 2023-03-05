@@ -8,10 +8,12 @@
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/profile.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/Scrollbar.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/message.css">
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/loading.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/message_chat.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/recentChat.css">
     <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/createPost.css">
     <link rel="icon" href="/Pages/Enviroment/600px-Instagram_icon.png" type="image/icon type">
+    <script src="/Pages/Enviroment/Script/logined.js" defer></script>
     <script src="/Pages/Enviroment/Script/moreBtn.js" defer></script>
     <script src="/Pages/Enviroment/Script/search.js" defer></script>
     <script src="/Pages/Enviroment/Script/messages.js" defer></script>
@@ -159,7 +161,10 @@
             <div class="mainMessage">
                 <div class="listMessageAndCustome">
                     <div class="accountAndCustome">
-                        <p>Coming soon</p>
+                        <p></p>
+                        <button class="CreateChat">
+                            <img src="/Pages/Enviroment/createChat.png" class="createChatIcon">
+                        </button>
                     </div>
                     <div class="listMessage">
                         
@@ -171,7 +176,7 @@
                         <img src="/Pages/Enviroment/send.png" class="LogoCreateConversation">
                         <h1 class="yourMessages">Your Messages</h1>
                         <p class="sendPrivate">Send private photos and messages to a friend or group.</p>
-                        <button class="sendMessage">Send message</button>
+                        <button class="sendMessageCrete">Send message</button>
                     </div>
                     
                 </div>
@@ -256,5 +261,6 @@
         </div>
     </div>
     <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
+    <script src="/Pages/Enviroment/Script/Loading.js"></script>
 </body>
 </html>

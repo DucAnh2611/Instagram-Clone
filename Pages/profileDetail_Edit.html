@@ -6,18 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/Instagram.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/profile.css">
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/loading.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/Scrollbar.css">
     <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/createPost.css">
     
     <link rel="icon" href="/Pages/Enviroment/600px-Instagram_icon.png" type="image/icon type">
+    <script src="/Pages/Enviroment/Script/logined.js" defer></script>
     <script src="/Pages/Enviroment/Script/moreBtn.js" defer></script>
-    <script src="/Pages/Enviroment/Script/edit.js" defer></script>
     <script src="/Pages/Enviroment/Script/search.js" defer></script>
     <script src="/Pages/Enviroment/Script/autoUpdateNav.js" defer></script>
     <script src="/Pages/Enviroment/Script/createPost.js" defer></script>
     <script src="/Pages/Enviroment/Script/socket_notification.js" defer></script>
     <script src="/Pages/Enviroment/Script/autoUpdateNotification.js" defer></script>
     <script src="/Pages/Enviroment/Script/toProfile.js" defer></script>
+    <script src="/Pages/Enviroment/Script/edit.js" defer></script>
     <title>Edit profile - Instagram</title>
 </head>
 <body>
@@ -190,7 +192,7 @@
                         <div class="aLineInformation">
                             <label for="username" class="labelInputSetting">Username</label>
                             <div class="inputDescription">
-                                <input type="text" id="username" class="inputEdit" placeholder="Username" name="username" value= "">
+                                <input type="text" id="username" class="inputEdit usernameInputEdit" placeholder="Username" name="username" value= "">
                                 <p class="descriptionForInput">In most cases, you'll be able to change your username back to ducanh261102 for another 14 days. <a class="learnMore" href="">Learn more</a></p>
                             </div>
                         </div>
@@ -301,6 +303,17 @@
             Log in
         </button>
     </div>    
+    <div class="changeStatus hide">
+        <div class="imgNoticeChangeStatus">
+            <img src=""class="inconNotice">
+        </div>
+        <div class="textNoticeChangeStatus">
+            <p class="textNotice">
+
+            </p>
+        </div>
+    </div>
     <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
+    <script src="/Pages/Enviroment/Script/Loading.js"></script>
 </body>
 </html>

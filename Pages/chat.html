@@ -9,14 +9,17 @@
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/Scrollbar.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/message_chat.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/chat.css" >
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/loading.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/recentChat.css">
     <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/selectText.css">
     <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/createPost.css">
 
     <link rel="icon" href="/Pages/Enviroment/600px-Instagram_icon.png" type="image/icon type">
+    <script src="/Pages/Enviroment/Script/logined.js" defer></script>
     <script src="/Pages/Enviroment/Script/moreBtn.js" defer></script>
     <script src="/Pages/Enviroment/Script/search.js" defer></script>
     <script src="/Pages/Enviroment/Script/chat.js" defer></script>
+    <script src="/Pages/Enviroment/Script/messages.js" defer></script>
     <script src="/Pages/Enviroment/Script/recent_chat.js" defer></script>
     <script src="/Pages/Enviroment/Script/createPost.js" defer></script>
     <script src="/Pages/Enviroment/Script/autoUpdateNav.js" defer></script>
@@ -161,9 +164,11 @@
                 <div class="listMessageAndCustome">
                     <div class="accountAndCustome">
                         <p></p>
+                        <button class="CreateChat">
+                            <img src="/Pages/Enviroment/createChat.png" class="createChatIcon">
+                        </button>
                     </div>
                     <div class="listMessage">
-
                     </div>
 
                 </div>
@@ -176,14 +181,19 @@
 
                         </div>
                     </div>
-                    <div class="messageBoardPart" style=>
+                    <div class="messageBoardPart">
                         <div class="messagePart">
 
                         </div>
                         <div class="typeWriterPart">
                             <div class="typeWriterDiv">
-                                <textarea class="messageHolder" placeholder="Message.."></textarea>
-                                <input type="button" value="Send" class="sendMessage">
+                                <textarea type="textarea" class="messageHolder" placeholder="Message..."></textarea>
+                                <button class="iconSend photoHolder">
+                                    <img src="/Pages/Enviroment/photo.png" class="iconSendPhoto">
+                                </button>
+                                <button class="iconSend sendMessage">
+                                    <img src="/Pages/Enviroment/sendmes.png" class="iconSendSend">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -225,5 +235,6 @@
     </div>
 
     <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
+    <script src="/Pages/Enviroment/Script/Loading.js"></script>
 </body>
 </html>
