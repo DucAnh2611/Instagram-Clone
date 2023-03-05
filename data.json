@@ -1,0 +1,75 @@
+{
+    "user1": {
+        "userInfor": {
+            "userid": 1,
+            "username_user": "",
+            "password_user": "",
+            "email": "@gmail.com",
+            "phone": "000000000",
+            "phoneActive": false,
+            "fullName": "",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    },
+    "user2": {
+        "userInfor": {
+            "userid": 1,
+            "username_user": "",
+            "password_user": "",
+            "email": "@gmail.com",
+            "phone": "000000000",
+            "phoneActive": false,
+            "fullName": "",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    },
+    "user3": {
+        "userInfor": {
+            "userid": 1,
+            "username_user": "",
+            "password_user": "",
+            "email": "@gmail.com",
+            "phone": "000000000",
+            "phoneActive": false,
+            "fullName": "",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    },
+    "user4": {
+        "userInfor": {
+            "userid": 1,
+            "username_user": "",
+            "password_user": "",
+            "email": "@gmail.com",
+            "phone": "000000000",
+            "phoneActive": false,
+            "fullName": "",
+            "dateOfBirth": "2002-11-26T07:00:00+07:00",
+            "gender": "Prefer not to say",
+            "createDate": "2023-03-04T07:00:00+07:00",
+            "avatar_path": "https://res.cloudinary.com/dxdmbosbl/image/upload/v1677747207/Instagram_Folder/default_ava_tp1inu.png",
+            "bio": "",
+            "activenow": false,
+            "lastActive": "2023-03-05T07:00:00+07:00"
+        }
+    }
+}
+
