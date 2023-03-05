@@ -26,6 +26,10 @@ CREATE TABLE IF NOT EXISTS User_Profile (
 	
 	primary key (userID)
 );
+
+CREATE INDEX userIndex
+ON User_Profile (userID);
+
 CREATE TABLE IF NOT EXISTS message_user (
 	messageId serial,
 	senderId int not null,
@@ -33,12 +37,15 @@ CREATE TABLE IF NOT EXISTS message_user (
 	messageContent varchar(200) not null,
 	messageSendTime timestamp with time zone not null,
 	messageState bool not null,
-	messageSeen bool not null,
 	
 	foreign key (senderId) references user_profile(userId),
 	foreign key (recieverId) references user_profile(userId),
 	primary key (messageId)
 );
+
+CREATE INDEX messageIndex 
+ON message_user (messageId);
+
 CREATE TABLE IF NOT EXISTS message_like (
 	likeMessageId serial,
 	messageId serial,
