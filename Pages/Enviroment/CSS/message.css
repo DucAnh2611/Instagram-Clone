@@ -1,0 +1,45 @@
+
+a{
+    text-decoration: none;
+    color: var(--text1);
+}
+
+.createNewConversation{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.LogoCreateConversation{
+    height: 100px;
+    margin-bottom: 20px;
+}
+.createNewConversation > h1{
+    font-weight: 400;
+    font-size: 2.3vh;
+}
+.createNewConversation > p{
+    font-size: 1.5vh;
+    color: var(--Color3);
+    margin-top: 10px;
+}
+.createNewConversation > button{
+    margin-top: 30px;
+    font-size: 1.6vh;
+    background-color:  var(--button2);
+    color: var(--Color1);
+    height: 35px;
+    width: 130px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    
+}
+.createNewConversation > button:hover{
+    background-color:  var(--ColorFacebook);
+    cursor: pointer;
+}

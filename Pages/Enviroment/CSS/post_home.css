@@ -1,0 +1,243 @@
+.postList{
+    display: flex;
+    flex-direction: column;
+}
+
+.onePostInList{
+    margin-bottom: 20px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px ;
+    border-bottom: 2px solid var(--Color3);
+    background-color: var(--Color1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px var(--Color3);
+}
+.headerPost{
+    height: 60px;
+    width: calc(100% - 20px);
+    padding: 0px 10px ;
+}
+.accountInfomation{
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.avatarInOnePostHolder{
+    height: 40px;
+    width: 40px;
+}
+.avatarInOnePostClip{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.avatarInOnePost{
+    height: 100%;
+}
+.usernameAndDateCreated{
+    margin-left: 10px;
+    height: 100%;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.usernameInOnePost{
+    text-decoration: none;
+    color: var(--text1);
+    font-size: 1.4vh;
+    font-weight: 500;
+}
+.dateCreatedInOnePost{
+    font-size: 1.2vh;
+    color: var(--Color3);
+}
+.contentPost, .contentPostHolder{
+
+    width: 100%;
+    height: fit-content;
+}
+.contentPostHolder{
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.blackBGInPost{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: var(--text1);
+    z-index: 0;
+}
+.pictureInOnePost{
+    width: 100%;
+    z-index: 0;
+}
+.buttonReactHolder{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 10px;
+}
+.buttonReact {
+    height: 40px;
+    background-color: transparent;
+    border: none;
+}
+.buttonReact:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+.iconButtonReact{
+    height: 25px;
+}
+.postInformation, .commentToPostholder{
+    margin: 0 15px;
+    width: calc(100% - 30px);
+}
+.postInformation{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+.countLikeOnePostHolder{
+    font-size: 1.5vh;
+    font-weight: 500;
+}
+.captionOfOnePost{
+    height: fit-content;
+    width: 100%;
+}
+.captionInOnePost{
+    font-size: 1.5vh;
+    overflow-wrap: break-word;
+}
+.userUpPostInOnePost{
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text1);
+    padding-right: 10px;
+}
+.userUpPostInOnePost:hover, .usernameInOnePost:hover{
+    color: var(--Color3);
+}
+.commentToPostholder{
+    height: fit-content;
+}
+.ListCommentPost{
+    margin-top: 10px;
+    max-height: 200px;
+    margin-bottom: 10px;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.aCommentPostHome{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-size: 1.5vh;
+}
+.aCommentPostLine{
+    display: flex;
+    align-items: flex-start;
+    overflow-wrap: break-word;
+}
+.userCommentInforPost{
+    text-decoration: none;
+    color: var(--text1);
+    font-weight: bold;
+    margin-right: 10px;
+}
+.avatarUserCommentInforPostHolder{
+    margin-right: 5px;
+}
+.avatarUserCommentInforPostClip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.avatarUserCommentInforPost{
+    height: 100%;
+}
+.viewAllCommentPost, .postCommentPost{
+    width: fit-content;
+    background-color: transparent;
+    border: none;
+    color: var(--Color3);
+    font-size: 1.6vh;
+    padding: 0;
+}
+.avatarUserCommentInforPost{
+    height: 100%;
+}
+.viewAllCommentPost:hover {
+    cursor: pointer;
+}
+.addCommentToPostHolder{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: fit-content;
+    border-bottom: 1px solid var(--Color3);
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.addCommentToPost{
+    height: 20px;
+    max-height: 50px;
+    width: 60%;
+
+    border: none;
+    resize: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.addCommentToPost:focus{
+    outline: none;
+}
+.postCommentPost{
+    color: var(--button2);
+    font-weight: bold;
+    font-size: 1.5vh;
+}
+.postCommentPost:hover {
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.show{
+    display: block;
+}

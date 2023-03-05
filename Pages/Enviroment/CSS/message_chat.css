@@ -1,0 +1,167 @@
+
+a{
+    text-decoration: none;
+    color: var(--text1);
+}
+
+.mainMessage{
+    height: 95vh;
+    width: 950px;
+    margin: 2% auto ;
+
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+
+    background-color: var(--Color1);
+    border-radius: 5px;
+    border: 1px solid var(--Color3);
+}
+.listMessageAndCustome{
+    width: 350px;
+    height: 100%;
+    border-right: 1px solid var(--Color3);
+    
+}
+.accountAndCustome{
+    position: relative;
+    width: 100%;
+    height: 6.5%;
+    display: flex;
+
+    border-bottom: 1px solid var(--Color3);
+}
+.CreateChat{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(-50%, -50%);
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+.CreateChat:hover{
+    cursor: pointer;
+}
+.createChatIcon{
+    width: 20px;
+}
+.accountAndCustome{
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+}
+
+.listMessage{
+    height: 93.5%;
+
+    overflow-y: scroll;
+}
+.messageBoard{
+    width: 599px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+}
+.searchUserToCreateConversation{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: var(--Color1);
+    width: 400px;
+    height: 600px;
+    border: 1px solid var(--Color3);
+    border-radius: 10px;
+
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    z-index: 5;
+}
+.searchUserTitle, .searchToUser, .suggestUser, .listSearchUserm, .suggestedUser{
+
+    width: 100%;
+}
+.searchUserTitle, .searchToUser{
+    border-bottom: 1px solid var(--Color3);
+}
+.searchUserTitle, .searchToUser, .suggestUser {
+    display: flex;
+    flex-direction: row;
+}
+.searchUserTitle {
+    height: 7%;
+
+    align-items: center;
+    justify-content: space-between;
+
+}
+.searchUserTitle > img{
+    height: 15px;
+    padding: 0px 20px;
+}
+.searchUserTitle > img:hover{
+    cursor: pointer;
+}
+.searchUserTitle > p {
+    font-weight: 600;
+}
+.searchUserTitle > button {
+    border: none;
+    background-color: transparent;
+    padding: 0px 20px;
+    color: var(--button2);
+    font-size: 1.5vh;
+}
+.searchUserTitle > button:hover {
+    cursor: pointer;
+    color: var(--ColorFacebook);
+}
+.searchToUser{
+    align-items: center;
+    flex-direction: row;
+    height: 9%;
+}
+.searchToUser > label{
+    padding: 0px 20px;
+    font-weight: 600;
+}
+.searchToUser > input{
+    padding: 5px 10px;
+    width: 70%;
+    height: 50%;
+    border: none;
+}
+.searchToUser > input:focus{
+    outline: none;
+}
+.suggestUser{
+    margin-top: 10px;
+    height: calc(87%-10px);
+    overflow-y: scroll;
+
+    flex-direction: column;
+}
+.suggestedUser > p {
+    padding: 10px 0 0 20px;
+    font-weight: 600;
+}
+.listSearchUser, .suggestedUser{
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.hide {
+    display: none;
+}
+.show{
+    display: block;
+}

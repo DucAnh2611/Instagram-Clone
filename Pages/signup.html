@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Pages/Enviroment/CSS/signup.css">
+    <link rel="icon" href="/Pages/Enviroment/600px-Instagram_icon.png" type="image/icon type">
+    <script src="/Pages/Enviroment/Script/signup.js" async></script>
+    <title>Sign up - Instagram</title>
+</head>
+<body>
+    <div class="signupForm-Main">
+        <div class="signupSection">
+            <div class="signupForm">
+                <img src="/Pages/Enviroment/Instagram_logo.png" class="signupForm-Logo">
+                <p class="headerText">Sign up to see photos and videos from your friends.</p>
+                <div class="otherSignupMethod">
+                    <a class="LoginWithFacebook" action="/facebookLogin">
+                        <img class="LogoFacebook" src="/Pages/Enviroment/facebooklogo.png">
+                        <span class="loginFacebookText">Log in with Facebook</span>
+                    </a>
+                </div>
+                <div class="divideMethod">
+                    <p class="divideText">OR</p>
+                </div>
+                <div class="mainSignupMethod">
+                    <div class="userSignup">
+                        <input type="text" name="emailOrPhone" id="emailOrPhone" class="emailOrPhone inputFields" placeholder="Mobile Phone or Email" required>
+                        <p class="stateEmail" style="display: none;"></p>
+                        <input type="text" name="fullname" id="fullname" class="fullname inputFields" placeholder="Full name" required>
+                        <input class="username-Login inputFields" type="text" name="username" id="username" placeholder="Username" required>
+                        <input type="password" class="password-Login inputFields" name="password" id="password" placeholder="Password" required>
+                    </div>
+                    <div class="term">
+                        <p class="textTermAgree">
+                            People who use our service may have uploaded your contact information to Instagram. <a href="https://www.facebook.com/help/instagram/261704639352628" class="learnMore">Learn More</a>
+                        </p>
+                        <p class="textTermAgree">
+                            By signing up, you agree to our <a href="https://help.instagram.com/581066165581870/?locale=en_US" class="terms">Terms</a> , <a href="https://www.facebook.com/privacy/policy" class="terms">Privacy Policy</a> and <a href="https://help.instagram.com/1896641480634370/" class="terms">Cookies Policy</a>
+                        </p>
+                    </div>
+                    <p class="stateSignup" style="display: none;"></p>
+                    <input type="submit" value="Sign up" class="submit-signup">
+                </div>
+            </div>
+
+            <form action="/login" method="post" class="signUpFormFacebook">
+                <p class="signUpText">Have an account?</p>
+                <input type="submit" value="Log in" class="signUpLink">
+            </form>
+            <div class="downloadInsta">
+                <p class="getTheAppText">Get the app</p>
+                <div class="getTheAppLink">
+                    <a href="https://play.google.com/store/apps/details?id=com.instagram.android" class="ggPlay">
+                        <img src="/Pages/Enviroment/c5Rp7Ym-Klz.png" class="ggPlay_Pic">
+                    </a>
+                    <a href="ms-windows-store://pdp/?productid=9nblggh5l9xt&referrer=appbadge&source=www.instagram.com&mode=mini&pos=0%2C0%2C1728%2C925" class="microsoft">
+                        <img src="/Pages/Enviroment/EHY6QnZYdNX.png" class="microsoft_Pic">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

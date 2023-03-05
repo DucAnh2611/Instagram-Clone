@@ -1,0 +1,1 @@
+document.querySelector(".toProfile").href = `/${localStorage.getItem('usernameLogined')}`;

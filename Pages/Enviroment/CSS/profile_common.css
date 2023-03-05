@@ -1,0 +1,306 @@
+.DashboardPane {
+    width: 935px;
+    flex-direction: column;
+}
+.userProfile{
+    min-height: 150px;
+    height: fit-content;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.userProfileAvatarHolder, .userProfileInformation{
+    height: 100%;
+}
+.userProfileAvatarHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    margin-right: 2%;
+}
+.userProfileAvatarClip{
+    height: 150px;
+    width: 150px;
+
+    border-radius: 100%;
+    overflow: hidden;
+}
+.userProfileAvatarBtn {
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 0;
+}
+.userProfileAvatarBtn:hover{
+    cursor: pointer;
+}
+.userProfileAvatar{
+    height: 100%;
+}
+.userProfileInformation{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+.userProfileLine {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+}
+.userProfileUsername, .userProfileFunction{
+    height: 100%;
+}
+.userProfileUsername{
+    max-width: 250px;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+}
+.userProfileUsernameText{
+    font-size: 2vh;
+    font-weight: 400;
+}
+.userProfileFunction{
+    height: 100%;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.btnUserFunction{
+    width: 90px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--button1);
+    font-size: 1.4vh;
+    font-weight: 550;
+    margin-left: 15px;
+}
+.btnUserFunction > a{
+    text-decoration: none;
+    color: var(--text1);
+    font-size: 1.3vh;
+}
+.btnUserFunction:hover{
+    cursor: pointer;
+    background-color: var(--Color3);
+}
+.followUser{
+    color: var(--Color1);
+    background-color: var(--button2);
+}
+.followUser:hover {
+    background-color: var(--ColorFacebook);
+}
+.countInforLine{
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+.countInforLine:hover{
+    cursor: pointer;
+}
+.valueCountInfor{
+    font-weight: bold;
+    margin-right: 5px;
+}
+.fullnameAndBio{
+    min-height: 40px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+.userProfileLineFullname{
+    font-weight: bold;
+}
+.userProfileLineBio{
+    max-width: 250px;
+    overflow-wrap: break-word;
+}
+.postTagged{
+    margin-top: 50px;
+    width: 100%;
+    height: fit-content;
+    border-top: 1px solid var(--Color3);
+    
+}
+.selectTabPostTag{
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.selectTab {
+    margin-right: 50px;
+    width: fit-content;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+}
+.iconSelectTab{
+    width: 10px;
+    margin-right: 5px;
+}
+.textSelectTab{
+    font-size: 1.4vh;
+    text-transform:uppercase;
+}
+.currentPageLoading{
+    border-top: 1px solid var(--text1);
+    opacity: 1;
+}
+.blackBG {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+
+    top:0;
+    left: 0;
+    background-color: var(--text1);
+    opacity: .4;
+
+    z-index: 3;
+}
+a{
+    text-decoration: none;
+}
+.popUp {
+    position: absolute;
+    height: 450px;
+    width: 400px;
+    border-radius: 10px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--Color1);
+    display: flex;
+    flex-direction: column;
+
+    z-index: 4;
+}
+.popUpNameHolder{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10%;
+    border-bottom: 1px solid var(--Color3);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.textPopUp{
+    font-size: 1.8vh;
+    font-weight: bold;
+}
+.closePopUp{
+    position: absolute;
+    height: 15px;
+    top:50%;
+    right: 10px;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.2s;
+}
+.closePopUp:hover {
+    cursor: pointer;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+.listInPathHolder{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+    width: calc(100% - 20px);
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.userFollowPopUp{
+    height: 50px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.userFollowPopUp:hover> .avatarFollowPopUpHolder{
+    transform: scale(1.05);
+}
+.avatarFollowPopUpHolder{
+    height: 100%;
+    width: 20%;
+    display: grid;
+    place-items: center;
+    transition-duration: 0.1s;
+}
+.avatarFollowPopUpClip{
+    flex: 50%;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.avatarFollowPopUp{
+    height: 100%;
+}
+.nameFollowPopUpHolder{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.nameFollowPopUpHolder > p {
+    color: var(--text1);
+}
+.usernameFollowPopUp{
+    font-size: 1.6vh;
+    font-weight: bold;
+}
+.fullnameFollowPopUp{
+    font-size: 1.4vh;
+}
+.postTabDisplay{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: fit-content;
+    width: calc(100% - 40px);
+    padding: 0 20px;
+    row-gap: 30px;
+}
+.hide {
+    display: none;
+}
+.show{
+    display: flex;
+}

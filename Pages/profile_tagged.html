@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/Instagram.css">
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/loading.css">
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/Scrollbar.css">
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/profile_common.css">
+    <link rel="stylesheet" type="text/css"  href="/Pages/Enviroment/CSS/createPost.css">
+
+    <link rel="icon" href="/Pages/Enviroment/600px-Instagram_icon.png" type="image/icon type">
+    <script src="/Pages/Enviroment/Script/profile_common.js" defer></script>
+    <script src="/Pages/Enviroment/Script/search.js" defer></script>
+    <script src="/Pages/Enviroment/Script/moreBtn.js" defer></script>
+    <script src="/Pages/Enviroment/Script/autoUpdateNav.js" defer></script>
+    <script src="/Pages/Enviroment/Script/createPost.js" defer></script>
+    <script src="/Pages/Enviroment/Script/toProfile.js" defer></script>
+    <script src="/Pages/Enviroment/Script/socket_notification.js" defer></script>
+    <script src="/Pages/Enviroment/Script/autoUpdateNotification.js" defer></script>
+    <title>Instagram</title>
+</head>
+<body>
+    <div class="Dashboard">
+        <div class="navbarDiv">
+            <div class="Dashboard_navBar">
+                <div class="Dashboard_navBar-Logo">
+                    <img src="/Pages/Enviroment/Instagram_logo.png" class = "logo-primary">
+                    <img src="/Pages/Enviroment/87390.png" class="logo-secondary">
+                </div>
+                <div class="Dashboard_navBar-functions">
+                    <a class="functionDiv" href="/home">
+                        <div class="aFuntion">
+                            <div class="logo-funtion">
+                                <img src="/Pages/Enviroment/home.png" class="img_function">
+                            </div>
+                            <p class="aFuntion_name">Home</p>
+                        </div>
+                    </a>
+                    <div class="aFuntion search">
+                        <div class="logo-funtion">
+                            <img src="/Pages/Enviroment/magnifying-glass-solid.svg" class="img_function">
+                        </div>
+                        <p class="aFuntion_name">Search</p>
+                    </div>
+                    <div class="aFuntion">
+                        <div class="logo-funtion">
+                            <img src="/Pages/Enviroment/compass-regular.svg" class="img_function">
+                        </div>
+                        <p class="aFuntion_name">Explore</p>
+                    </div>
+                    <div class="aFuntion">
+                        <div class="logo-funtion">
+                            <img src="/Pages/Enviroment/instagram-reels-icon.png" class="img_function">
+                        </div>
+                        <p class="aFuntion_name">Reels</p>
+                    </div>
+                    <a class="functionDiv" href="/message">
+                        <div class="aFuntion">
+                            <div class="logo-funtion">
+                                <img src="/Pages/Enviroment/messenger.png" class="img_function">
+                            </div>
+                            <p class="aFuntion_name">Messages</p>
+                        </div>
+                    </a>
+                    <div class="aFuntion notification">
+                        <div class="logo-funtion">
+                            <img src="/Pages/Enviroment/heart.png" class="img_function">
+                        </div>
+                        <p class="aFuntion_name">Notifications</p>
+                    </div>
+                    <div class="aFuntion">
+                        <div class="logo-funtion">
+                            <img src="/Pages/Enviroment/more.png" class="img_function">
+                        </div>
+                        <p class="aFuntion_name">Create</p>
+                    </div>
+                    <a class="functionDiv toProfile" href="/">
+                        <div class="aFuntion">
+                            <div class="logo-funtion avatarDiv">
+                                <img src="" class="img_function avatar">
+                            </div>
+                            <p class="aFuntion_name pageLoading">Profile</p>
+                            </div>
+                    </a>
+                </div>
+                <div class="Dashboard_navBar-more">
+                    <div class="logo-funtion">
+                        <img src="/Pages/Enviroment/burger_line_list_menu_nav_navigation_option_icon_123231.png" class="img_more">
+                    </div>
+                    <p class="more_text">More</p>
+                    <div class="moreClicked hideMenu">
+                        <div class="moreSide firstSide">
+                            <a class="aFunctionsInSide" href="/edit">
+                                <p class="functionName">Setting</p>
+                                <img src="/Pages/Enviroment/settings.png" class="iconFunction">
+                            </a>
+                            <div class="aFunctionsInSide">
+                                <p class="functionName">Saved</p>
+                                <img src="/Pages/Enviroment/bookmark.png" class="iconFunction">
+                            </div>
+                            <div class="aFunctionsInSide">
+                                <p class="functionName">Switch appearance</p>
+                                <img src="/Pages/Enviroment/moon.png" class="iconFunction">
+                            </div>
+                            <div class="aFunctionsInSide">
+                                <p class="functionName">Your activities</p>
+                                <img src="/Pages/Enviroment/time.png" class="iconFunction">
+                            </div>
+                            <div class="aFunctionsInSide">
+                                <p class="functionName">Report a problem</p>
+                                <img src="/Pages/Enviroment/report.png" class="iconFunction">
+                            </div>
+
+                        </div>
+                        <div class="moreSide secondSide">
+                            <div class="aFunctionsInSide">
+                                <p class="functionName">Switch Account</p>
+                            </div>
+                            <div class="aFunctionsInSide">
+                                <p class="functionName">Log out</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="searchPane hideSearch">
+                <div class="searchDiv">
+                    <p class="searchText">Search</p>
+                    <input type="text" placeholder="Search" class="searchInput">
+                </div>
+                <div class="searchRecentAndResult">
+                    <div class="recentSearch showMenu" >
+                        <p class="recentText">Recent</p>
+                        <div class="resultRecent">
+
+                        </div>
+                    </div>
+                    <div class="resultSearch hideMenu">
+
+                    </div>                    
+                </div>
+
+            </div>
+            <div class="notificationPane hide">
+                <div class="headerNotification">
+                    <p class="headerTextNotification">Notifications</p>
+                </div>
+                <div class="listNotification">
+
+                </div>
+            </div>
+        </div>
+    
+        <div class="Dashboard_mainBoard">
+            <div class="DashboardPane">
+                <div class="userProfile">
+                    <div class="userProfileAvatarHolder">
+                        <div class="userProfileAvatarClip">
+                            <button class="userProfileAvatarBtn">
+                                <img src="/Pages/Enviroment/600px-Instagram_icon.png" class="userProfileAvatar">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="userProfileInformation">
+                        <div class="userProfileLine nameAndBtn">
+                            <div class="userProfileUsername">
+                                <p class="userProfileUsernameText">
+                                </p>
+                            </div>
+                            <div class="userProfileFunction">
+                                <button class="btnUserFunction followUser">Follow</button>
+                                <button class="btnUserFunction unFollowUser">Unfollow</button>
+                                <button class="btnUserFunction messageUser"><a href="/">Message</a></button>
+                                <button class="btnUserFunction editUser"><a href="/edit">Edit profile</a></button>
+                            </div>
+                        </div>
+                        <div class="userProfileLine countInfor">
+                            <div class="countInforLine">
+                                <p class="valueCountInfor countPostUser">0</p>
+                                <p class="nameCountInfor">Posts</p>
+                            </div>  
+                            <div class="countInforLine FollowerShow">
+                                <p class="valueCountInfor countFollowedUser">0</p>
+                                <p class="nameCountInfor">Followers</p>
+                            </div>
+                            <div class="countInforLine FollowingShow">
+                                <p class="valueCountInfor countFollowingUser">0</p>
+                                <p class="nameCountInfor">Following</p>
+                            </div>
+                        </div>
+                        <div class="userProfileLine fullnameAndBio">
+                            <p class="userProfileLineFullname">
+                            </p>
+                            <p class="userProfileLineBio">
+                                nfnsdjnfjkdsnfjasfnjenfpjasdnfpasnefpnaesnfjasjdfnaeiufnpeaisnfp
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="postTagged">
+                    <div class="selectTabPostTag">
+                        <a class="selectTab postTab">
+                            <img src="/Pages/Enviroment/post.png" class="iconSelectTab">
+                            <p class="textSelectTab">Posts</p>
+                        </a>
+                        <a class="selectTab savedTab">
+                            <img src="/Pages/Enviroment/bookmark.png" class="iconSelectTab">
+                            <p class="textSelectTab">Saved</p>
+                        </a>
+                        <a class="selectTab taggedTab">
+                            <img src="/Pages/Enviroment/tag.png currentPageLoading" class="iconSelectTab">
+                            <p class="textSelectTab">Tagged</p>
+                        </a>
+                    </div>
+                    <div class="postTabDisplay">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logOutPopUps">
+        <div class="textLogOut">
+            <p class="firstTextLogOut">Logging out</p>
+            <p class="secondTextLogOut">You need to log back in</p>
+        </div>
+        <button class="btnLogOut">
+            Log in
+        </button>
+    </div>
+    <div class="popUp hide">
+        <div class="popUpNameHolder"> 
+            <p class="textPopUp"></p>
+            <img src="/Pages/Enviroment/close.png" class="closePopUp"> 
+        </div>
+        <div class="listInPathHolder"> 
+        </div>
+    </div>
+    <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
+    <script src="/Pages/Enviroment/Script/Loading.js"></script>
+</body>
+</html>
