@@ -357,6 +357,73 @@ app.post('/search', async function(request, respone){
 
   respone.status(200).json(clientUser.rows);
 })
+app.post('/search', async function(request, respone){
+  let clientUserLoad = new Client(clientConnect);
+  await clientUserLoad.connect();
+  var clientUser = await clientUserLoad.query(`SELECT username_user,fullname,avatar_path FROM user_profile WHERE (username_user LIKE '%${request.query.key}%' OR fullname LIKE '%${request.query.key}%') ORDER BY userID`);
+  await clientUserLoad.end();
+
+  respone.status(200).json(clientUser.rows);
+})
+app.post('/search/addRecentSearch', async function(request, respone){
+  var usernameFind = request.query.username_find;
+  var usernameReq = request.body.username;
+
+  let addRecentSearch = new Client(clientConnect);
+  await addRecentSearch.connect();
+
+  var usernameFindId = await addRecentSearch.query(`SELECT userid FROM user_profile WHERE username_user='${usernameFind}'`);
+  var usernameReqId = await addRecentSearch.query(`SELECT userid FROM user_profile WHERE username_user='${usernameReq}'`);
+  var existsSearch = await addRecentSearch.query(`
+    SELECT COUNT(*)
+    FROM recentsearch
+    WHERE userid = ${usernameReqId.rows[0].userid} AND searchid = ${usernameFindId.rows[0].userid}
+  `);
+  if(existsSearch.rows[0].count == 0) {
+    var addRecent = await addRecentSearch.query(`
+    INSERT INTO recentsearch
+    VALUES (${usernameReqId.rows[0].userid}, ${usernameFindId.rows[0].userid})`);
+  }
+
+  await addRecentSearch.end();
+
+  respone.status(200).json({status: "ok"});
+})
+app.post('/search/removeFromRecent', async function(request, respone){
+  var usernameFind = request.query.username_find;
+  var usernameReq = request.body.username;
+
+  let removeFromRecent = new Client(clientConnect);
+  await removeFromRecent.connect();
+
+  var usernameFindId = await removeFromRecent.query(`SELECT userid FROM user_profile WHERE username_user='${usernameFind}'`);
+  var usernameReqId = await removeFromRecent.query(`SELECT userid FROM user_profile WHERE username_user='${usernameReq}'`);
+
+  var deletefromRecent = await removeFromRecent.query(`
+     DELETE FROM recentsearch
+     WHERE userid = ${usernameReqId.rows[0].userid} AND searchid = ${usernameFindId.rows[0].userid}
+  `);
+
+  await removeFromRecent.end();
+
+  respone.status(200).json({status: "heello"});
+})
+app.post('/getAllRecent', async function(request, respone){
+
+  let getAllRecent = new Client(clientConnect);
+  await getAllRecent.connect();
+
+  var usernameFindId = await getAllRecent.query(`
+    SELECT up2.username_user, up2.avatar_path, up2.fullname 
+    FROM user_profile AS up1 INNER JOIN recentsearch AS rcs ON up1.userid = rcs.userid
+                             INNER JOIN user_profile AS up2 ON rcs.searchid = up2.userid
+    WHERE up1.username_user = '${request.body.username}'
+  `);
+
+  await getAllRecent.end();
+
+  respone.status(200).json(usernameFindId.rows);
+})
 var fixDate = (needFix) => {
   var newDate = (new Date(needFix)).toISOString().substring(0, 10);
   var newDay = String(parseInt(newDate[newDate.length-1]));

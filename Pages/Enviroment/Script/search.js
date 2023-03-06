@@ -41,41 +41,20 @@ searchInput.addEventListener("input", async (event) => {
         .then((data) => {
             while(resultsSearch.firstElementChild) {resultsSearch.firstChild.remove()}
             data.forEach(userFind => {
-                var userResult_SearchHolder = createDivLinkToProfile(userFind);
+                var userResult_SearchHolder = createDivLinkToProfile(userFind, 1);
                 resultsSearch.appendChild(userResult_SearchHolder);
 
-                userResult_SearchHolder.addEventListener("click", () =>{
-                var resultRecent = document.querySelector(".resultRecent");
-                var saveResultToRecent = createDivLinkToProfile(userFind);
-
-                    if(resultRecent.firstElementChild!= null) {
-                        var found = false;
-                        console.log(userFind);
-                        for(let i =0 ; i< resultRecent.childElementCount; i++){
-                            console.log(resultRecent.children[i].children[1].children[0].innerText);
-                            found = false;
-                            if(resultRecent.children[i].children[1].children[0].innerText == userFind.username_user) {
-                                found = true;
-                                i = resultRecent.childElementCount+1;
-                            }
-                        }
-                        if(!found){
-                            console.log("true")
-                            resultRecent.appendChild(saveResultToRecent);
-                        }
-                    } else {
-                        resultRecent.appendChild(saveResultToRecent);
-                    }
+                userResult_SearchHolder.addEventListener("click", async () =>{
+                    addToRecentSearch(userFind);
                 })
             });
         })
     }
 });
-
-function createDivLinkToProfile(userFind) {
-    var userResult_SearchHolder = document.createElement("a");
+// async function loadRecentSearch();
+function createDivLinkToProfile(userFind, type) {
+    var userResult_SearchHolder = document.createElement("div");
     userResult_SearchHolder.className = "userResult_SearchHolder";
-    userResult_SearchHolder.href = `/${userFind.username_user}`
 
     var userResult_AvatarPart = document.createElement("div");
     userResult_AvatarPart.className = "userResult_AvatarPart";
@@ -101,6 +80,66 @@ function createDivLinkToProfile(userFind) {
     userResult_InforPart.appendChild(userResult_username);
     userResult_InforPart.appendChild(userResult_fullname);
 
+    if(type == 0) {
+        var buttonRemoveRecent = document.createElement("button");
+        buttonRemoveRecent.className = "buttonRemoveRecent";
+        var iconRemoveRecent =document.createElement("img");
+        iconRemoveRecent.src = "/Pages/Enviroment/close.png";
+
+        buttonRemoveRecent.addEventListener("click", async (event)=>{
+            await removeFromRecentSearch(userFind); 
+            event.target.parentElement.parentElement.remove()
+        })
+
+        userResult_SearchHolder.appendChild(buttonRemoveRecent);
+        buttonRemoveRecent.appendChild(iconRemoveRecent);
+    }
+
     return userResult_SearchHolder;
 }
-
+async function addToRecentSearch(userFind) {
+    var addToRecent = await fetch(`/search/addRecentSearch?username_find=${userFind.username_user}`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: localStorage.getItem('usernameLogined')
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        window.location.href = `/${userFind.username_user}`
+    })
+}
+async function removeFromRecentSearch(userFind) {
+    var removeRecentPer = await fetch(`/search/removeFromRecent?username_find=${userFind.username_user}`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: localStorage.getItem('usernameLogined')
+        })
+    })
+}
+async function getRecentSearch() {
+    var getAllRecent = await fetch('/getAllRecent', {
+        method:"POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: localStorage.getItem('usernameLogined')
+        })
+    })
+    .then(res => res.json())
+    .then(data=> {
+        data.forEach(person => {
+            var resultRecent = document.querySelector(".resultRecent");
+            var userResult_SearchHolder = createDivLinkToProfile(person, 0);
+            resultRecent.appendChild(userResult_SearchHolder);
+        })
+    })
+}
+getRecentSearch();

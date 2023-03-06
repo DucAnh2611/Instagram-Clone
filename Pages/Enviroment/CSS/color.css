@@ -1,0 +1,22 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+}
+:root {
+    --Color1: #FEFEFF;
+    --Color2: #FBFBFA;
+    --Color3: #C6C6C7;
+    --Color4: #EFEFEF;
+    --Color5: rgb(0,0,0,0.2);
+    --Color6: rgb(0,0,0,1);
+    --Color7: rgb(0,0,0,0.5);
+    --ColorOk: chartreuse;
+    --ColorFacebook: #3951A4;
+    --button1: #EEEFEE;
+    --button2: #4CB5F8;
+    --text1: #272726;
+    --noti1: #FF3141;
+}
+*{
+    margin: 0;
+}

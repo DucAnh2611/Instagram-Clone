@@ -133,37 +133,46 @@ a{
 
 .optionMessageHolder{
     position: absolute;
-    height: fit-content;
-    min-height: 30px;
-    width: 120px;
-    top: 0;
-    left: 50%;
+    width: fit-content;
+    height: 30px;
+    min-width: 70px;
+    top: 50%;
+    left: 0px;
     background-color: var(--text1);
     border-radius: 10px;
-    transform: translate(-50%, -100%);
+    transform: translate(-100%, -50%);
     opacity: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 .optionMessageHolder::before{
     content: '';
     position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(135deg);
+    right: -15%;
+    top: 50%;
+    transform: translate(-100%, -50%) rotate(45deg);
     height: 0;
     width: 0;
-    border-bottom: 15px solid transparent;
-    border-right: 15px solid var(--text1);
-    border-top: 15px solid var(--text1);
-    border-left: 15px solid transparent;
-    border-radius: 7px;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid var(--text1);
+    border-top: 10px solid var(--text1);
+    border-left: 10px solid transparent;
+    border-radius: 5px;
+}
+.recieve > .divListFuncForAline > .more >  .optionMessageHolder{
+    left: -40px;
+    transform: translate(100%, -50%);
+}
+.recieve > .divListFuncForAline > .more > .optionMessageHolder::before{
+    top: 50%;
+    transform: translate(-100%, -50%) rotate(-135deg);
+    left: 20%;
 }
 .optionMessage {
     height: 30px;
-    width: 100%;
+    width: 70px;
     display: flex;
     justify-content: center;
     align-items: center;

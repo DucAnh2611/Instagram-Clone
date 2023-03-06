@@ -256,7 +256,6 @@ function createALineText(inputMessage, positionMessage) {
     var secoundOptionsText = document.createElement("p");
     secoundOptionsText.className = "optionMessageText";
     secoundOptionsText.innerText = "Forward";
-    secoundOptions.style.display = "none"
 
     if(inputMessage.messagestate == false) {
         aFuncInListLike.style.display ="none";
@@ -310,16 +309,16 @@ function createALineText(inputMessage, positionMessage) {
         popupOptionMoreMessage.style.display= "flex";
         firstOptions.addEventListener("mouseover", ()=>{
             popupOptionMoreMessage.style.display= "flex";
-        })
+        });
         secoundOptions.addEventListener("mouseover", ()=>{
             popupOptionMoreMessage.style.display= "flex";
-        })
+        });
         firstOptions.addEventListener("mouseout", ()=>{
             popupOptionMoreMessage.style.display= "none";
-        })
+        });
         secoundOptions.addEventListener("mouseout", ()=>{
             popupOptionMoreMessage.style.display= "none";
-        })
+        });
     });
     firstOptions.addEventListener("click", () =>{
         socket.emit('deleteMes', {
