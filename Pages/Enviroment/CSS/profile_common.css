@@ -15,7 +15,7 @@
 .userProfileAvatarHolder, .userProfileInformation{
     height: 100%;
 }
-.userProfileAvatarHolder {
+.userProfileAvatarHolder, .userProfileAvatarBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,6 +35,7 @@
     width: 100%;
     border: none;
     padding: 0;
+    margin: 0;
 }
 .userProfileAvatarBtn:hover{
     cursor: pointer;

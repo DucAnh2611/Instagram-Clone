@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS recentSearch;
 DROP TABLE IF EXISTS noti;
 DROP TABLE IF EXISTS likeOfPost;
 DROP TABLE IF EXISTS commentOfPost;
@@ -117,4 +118,13 @@ CREATE TABLE IF NOT EXISTS noti (
 	primary key (notiId),
 	foreign key (userSendNotiID) references User_Profile(userID),
 	foreign key (userRecNotiID) references User_Profile(userID)
-)
+);
+CREATE TABLE IF NOT EXISTS recentSearch (
+	userId int not null,
+    searchId int not null,
+	
+	foreign key (userId) references User_Profile(userID),
+	foreign key (searchId) references User_Profile(userID)
+);
+ALTER TABLE recentSearch
+ADD CONSTRAINT recentSearch_PK primary key (userId, searchId);

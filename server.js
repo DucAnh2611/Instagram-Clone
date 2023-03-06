@@ -31,10 +31,46 @@ app.post('/home', async function(request, response) {
 
   let clientUserLoad = new Client(clientConnect);
   await clientUserLoad.connect();
-  var clientUser = await clientUserLoad.query(`SELECT username_user,fullname,avatar_path FROM user_profile WHERE username_user='${request.body.username}'`);
+
+  var clientUser = await clientUserLoad.query(`
+    SELECT username_user,fullname,avatar_path 
+    FROM user_profile 
+    WHERE username_user='${request.body.username}'
+  `);
   await clientUserLoad.end();
 
-  response.status(200).json(clientUser.rows[0]);
+  response.status(200).json( {userInfor: {...clientUser.rows[0]}} );
+})
+app.post('/home/getMoreSuggestList', async function(request, response) {
+
+  let getMoreSuggestList = new Client(clientConnect);
+  await getMoreSuggestList.connect();
+  var userid = await getMoreSuggestList.query(`   
+    SELECT userid 
+    FROM user_profile 
+    WHERE username_user = '${request.body.username}'
+  `);
+  var clientUser = await getMoreSuggestList.query(`
+    SELECT username_user,fullname,avatar_path 
+    FROM user_profile 
+    WHERE username_user='${request.body.username}'
+  `);
+  var suggestUserFollow = await getMoreSuggestList.query(`
+    SELECT DISTINCT up2.username_user, up2.fullname, up2.avatar_path
+    FROM follow AS fl INNER JOIN user_profile AS up2 ON fl.followid = up2.userid
+    WHERE fl.userid IN (SELECT DISTINCT fl.followid
+                        FROM user_profile AS up INNER JOIN follow AS fl ON up.userid = fl.userid
+                        WHERE fl.userid = ${userid.rows[0].userid})
+        AND fl.followid NOT IN (SELECT DISTINCT fl.followid
+                        FROM user_profile AS up INNER JOIN follow AS fl ON up.userid = fl.userid
+                        WHERE fl.userid = ${userid.rows[0].userid})
+        AND fl.followid <> ${userid.rows[0].userid}
+    OFFSET ${request.body.from} ROWS
+    FETCH NEXT ${request.body.end} ROWS ONLY
+  `);
+  await getMoreSuggestList.end();
+
+  response.status(200).json({suggestFollow: {...suggestUserFollow.rows}});
 })
 app.post('/home/getPostFollowing', async function(request, response) {
 

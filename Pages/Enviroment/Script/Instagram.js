@@ -12,9 +12,21 @@ async function UpdateFields() {
     })
     .then(res => res.json())
     .then((data) => {
-        document.querySelector(".avatarProfile").src = data.avatar_path;
-        document.querySelector(".IdUserLogin").innerText = data.username_user;
-        document.querySelector(".nameUserLogin").innerText = data.fullname;
+        document.querySelector(".avatar").src = data.userInfor.avatar_path;
+        document.querySelector(".toProfile").href = `/${data.userInfor.username_user}`;
+
+        document.querySelector(".avatarProfile").src = data.userInfor.avatar_path;
+        document.querySelector(".IdUserLogin").innerText = data.userInfor.username_user;
+        document.querySelector(".nameUserLogin").innerText = data.userInfor.fullname;
+
+        var suggestListDisplay = document.querySelector(".suggestListDisplay");
+        getMoreLine(suggestListDisplay.childElementCount, 6);
+
+        suggestListDisplay.addEventListener("scroll", (event)=>{
+            if(suggestListDisplay.offsetHeight + suggestListDisplay.scrollTop >=suggestListDisplay.scrollHeight) {
+                getMoreLine(event.target.childElementCount, event.target.childElementCount + 5);
+            }
+        })
     })
     
 };
@@ -229,5 +241,49 @@ async function unlikePost(post, index) {
         document.querySelectorAll(".countLikeOnePost")[index].innerHTML =`${data.countLikeLeft} likes`
     });
 };
+async function getMoreLine(from, end) {
+    let moreSuggest = localStorage.getItem('usernameLogined');
+    const respone = await fetch(`/home/getMoreSuggestList` , {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: localStorage.getItem('usernameLogined'),
+            from: from,
+            end: end
+        })
+    })
+    .then(res => res.json())
+    .then((data) => {
+        var listMore = Object(data.suggestFollow);
+        if(Object.keys(listMore).length > 0) {
+            Object.keys(listMore).map(keys => {
+                createALineSuggest(listMore[keys])
+             })
+        }
+
+    });
+}
+async function createALineSuggest(user) {
+    var suggestListDisplay = document.querySelector(".suggestListDisplay");
+
+    var aSuggestPerson = document.createElement("a");
+    aSuggestPerson.className = "aSuggestPerson";
+    aSuggestPerson.href = `/${user.username_user}`;
+    aSuggestPerson.innerHTML = `
+        <div class="avatarSuggestHolder">
+            <div class="avatarSuggestClip">
+                <img class="avatarSuggest" src="${user.avatar_path}">
+            </div>
+        </div>
+        <div class="inforSuggestHolder">
+            <p class="inforSuggestName"> ${user.username_user}</p>
+            <p class="inforSuggestFullname">${user.fullname}</p>
+        </div>
+    `;
+    suggestListDisplay.appendChild(aSuggestPerson);
+
+}
 var socket = io();
 postLoad();

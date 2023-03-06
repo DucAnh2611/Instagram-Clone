@@ -11,8 +11,8 @@ async function UpdateNav() {
     })
     .then(res => res.json())
     .then((data) => {
-        document.querySelector(".avatar").src = data.avatar_path;
-        document.querySelector(".toProfile").href = `/${data.username_user}`;
+        document.querySelector(".avatar").src = data.userInfor.avatar_path;
+        document.querySelector(".toProfile").href = `/${data.userInfor.username_user}`;
 
     })
     
