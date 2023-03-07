@@ -1,14 +1,16 @@
 const { Client } = require('pg');
+const dotenv = require('dotenv').config()
 const clientConnect = {
-    host: "localhost",
-    user: 'postgres',
-    database: "Instagram_Project",
-    password: '1',
-    port: 5433
+    host: process.env.PGHOST,
+    user: process.env.PGUSER,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD,
+    port: process.env.PGPORT
 };
 const fs = require('fs');
 let fileDataJson = fs.readFileSync('data.json');
 let userList = JSON.parse(fileDataJson);
+
 function insertUser(userList) {
     Object.keys(userList).map(async (user) => {
         var userInfor = userList[user].userInfor;
@@ -45,4 +47,4 @@ function insertFollow(userList) {
     })
 }
 // insertUser(userList);
-insertFollow(userList);
+// insertFollow(userList);

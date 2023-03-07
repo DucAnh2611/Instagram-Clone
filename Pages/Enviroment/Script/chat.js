@@ -458,13 +458,15 @@ async function showListLikeMessage(messageid) {
 
             bodyPart.appendChild(newPeron);
 
-            newPeron.onclick = ()=>{
-                socket.emit('likeMessage', {
-                    messageid: messageid,
-                    usernameLike: localStorage.getItem("usernameLogined")
-                });
-                hideBG();
-                popupLikerHolder.remove();
+            if(person.username == localStorage.getItem("usernameLogined")) {
+                newPeron.onclick = ()=>{
+                    socket.emit('likeMessage', {
+                        messageid: messageid,
+                        usernameLike: localStorage.getItem("usernameLogined")
+                    });
+                    hideBG();
+                    popupLikerHolder.remove();
+                }
             }
         }) 
     })

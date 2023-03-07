@@ -3,17 +3,26 @@ const http = require('http');
 const { Server } = require("socket.io");
 const path = require('path');
 const app = express();
-// kho luu tru hinh anh
-const cloudinary = require('cloudinary').v2;
 const serverCreated = http.createServer(app);
 const io = new Server(serverCreated);
+// kho luu tru hinh anh
+const cloudinary = require('cloudinary').v2;
 
-require('dotenv').config();
+//Tao login database
+const dotenv = require('dotenv').config();
+const { Client } = require('pg');
+const clientConnect = {
+    host: process.env.PGHOST,
+    user: process.env.PGUSER,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD,
+    port: process.env.PGPORT
+};
 app.set('view engine', 'ejs');
 cloudinary.config({
-  cloud_name: "dxdmbosbl",
-  api_key: "294637266427957",
-  api_secret: "2vnqcURb_LbWUJpEVN4yOoocodI"
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 })
 app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true, limit: "20mb"}));
@@ -675,15 +684,6 @@ app.post('/change-password/authChange',async function(request, respone) {
   respone.send(request.body);
 
 })
-//Tao login database
-const { Client } = require('pg');
-const clientConnect = {
-    host: "localhost",
-    user: 'postgres',
-    database: "Instagram_Project",
-    password: '1',
-    port: 5433
-};
 
 //Nhan thong tin khi an Login
 var statusFailed = 0;
