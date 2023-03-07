@@ -7,7 +7,7 @@ a{
 .mainMessage{
     height: 95vh;
     width: 950px;
-    margin: 2% auto ;
+    margin: 20px auto ;
 
     display: flex;
     flex-direction: row;
@@ -18,6 +18,7 @@ a{
     border: 1px solid var(--Color3);
 }
 .listMessageAndCustome{
+    min-width: 350px;
     width: 350px;
     height: 100%;
     border-right: 1px solid var(--Color3);
@@ -57,7 +58,7 @@ a{
 .listMessage{
     height: 93.5%;
 
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .messageBoard{
     width: 599px;
@@ -145,7 +146,7 @@ a{
 .suggestUser{
     margin-top: 10px;
     height: calc(87% - 10px);
-    overflow-y: scroll;
+    overflow-y: auto;
 
     flex-direction: column;
 }
@@ -155,7 +156,7 @@ a{
 }
 .listSearchUser, .suggestedUser{
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -169,6 +170,56 @@ a{
 }
 .userResult_SearchHolderMes:hover{
     background-color: var(--button1);
+}
+@media screen and (max-width: 1065px) {
+    .mainMessage{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 935px) {
+    .mainMessage{
+        margin: 0;
+        height: 100vh;
+        width: 100%;
+        border: none;
+    }
+}
+@media screen and (max-width: 766px) {
+    .mainMessage{
+        margin: 50px 0;
+        height: calc( 100vh - 100px) ;
+    }
+    .listMessageAndCustome{
+        width: 30%;
+        min-width: 30%;
+    }
+    .messageBoard{
+        width: calc(100% - 30%);
+    }
+}
+@media screen and (max-width: 570px) {
+    .listMessageAndCustome{
+        width: 100px;
+        min-width: 100px;
+    }
+    .messageBoard{
+        width: calc(100% - 100px);
+    }
+    .accountAndCustome >p {
+        display: none;
+    }
+    .CreateChat{
+        right: 30%;
+    }
+}
+
+.showMenu, .showSearch{
+    display: block;
+}
+
+.hideMenu, .hideSearch{
+    display: none;
+    animation: fade 0.2s;
 }
 .hide {
     display: none;

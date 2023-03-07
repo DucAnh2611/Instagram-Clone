@@ -23,6 +23,7 @@ a{
     font-size: 2.3vh;
 }
 .createNewConversation > p{
+    text-align: center;
     font-size: 1.5vh;
     color: var(--Color3);
     margin-top: 10px;

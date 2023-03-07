@@ -68,3 +68,15 @@
 .avatarPicChat{
     max-height: 50px;
 }
+
+@media screen and (max-width: 766px) {
+    .avatarChatHolder{
+        flex: 10%;
+    }
+}
+@media screen and (max-width: 570px) {
+    .nameAndFullnameHolder{
+        display: none;
+    }
+}
+

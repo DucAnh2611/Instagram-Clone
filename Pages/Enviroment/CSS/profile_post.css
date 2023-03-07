@@ -1,4 +1,5 @@
 .aPostDisplayProfile{
+    display: block;
     margin: 10px;
     height: 270px;
     width: 270px;
@@ -64,4 +65,94 @@
 }
 .likeIconPostProfile{
     height: 30px;
+}
+@media screen and (max-width: 1024px) {
+    .DashboardPane{
+        width: 98%;
+    }
+    .aPostDisplayProfile{
+        --size: calc(81vw / 3);
+        width: var(--size);
+        height: var(--size);
+        margin: 10px;
+    }
+    .postTabDisplay{
+        row-gap: 10px;
+    }
+
+}
+@media screen and (max-width: 935px) {
+    .DashboardPane{
+        margin: 30px auto;
+    }
+    .postTabDisplay{
+        row-gap: 5px;
+    }
+    .aPostDisplayProfile{
+        --size: calc(80vw / 3);
+        width: var(--size);
+        height: var(--size);
+        margin: 5px;
+    }
+}
+@media screen and (max-width: 766px) {
+    .DashboardPane{
+        margin: 50px 0;
+        width: 100%;
+    }
+    .userProfile{
+        margin-top: 30px;
+    }
+    .userProfileAvatarClip{
+        height: 80px;
+        width: 80px;
+    }
+    .userProfile{
+        height:fit-content;
+        width: 100%;
+        align-items: flex-start;
+    }
+    .userProfileAvatarHolder{
+        align-items: flex-start;
+        margin: 0;
+        width: 30%;
+    }
+    .nameAndBtn{
+        height: fit-content;
+        flex-direction: column;
+    }
+    .userProfileUsername{
+        height: 50px;
+        align-items: flex-start;
+        
+    }
+    .userProfileFunction{
+        justify-content: flex-start;
+        width: 70;
+    }
+    .userProfileInformation{
+        height: fit-content;
+    }
+    .followUser{
+        flex: 100%;
+    }
+    .btnUserFunction {
+        margin-left: 0;
+        flex: 50%;
+    }
+    .messageUser{
+        margin-left: 10px;
+    }
+    .postTagged{
+        margin-top: 20px    ;
+    }
+    .postTabDisplay{
+        row-gap: 1.5px;
+    }
+    .aPostDisplayProfile{
+        --size: calc(87vw / 3);
+        width: var(--size);
+        height: var(--size);
+        margin: 2.4px;
+    }
 }

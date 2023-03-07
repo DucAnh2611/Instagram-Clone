@@ -62,19 +62,25 @@
     color: var(--text1);
     font-size: 1.4vh;
     font-weight: 500;
+    width: 200px;
+    text-overflow: clip;
 }
 .dateCreatedInOnePost{
+    width: 200px;
     font-size: 1.2vh;
     color: var(--Color3);
+
 }
-.contentPost, .contentPostHolder{
+.contentPost{
 
     width: 100%;
-    height: fit-content;
+    height: 600px;
 }
 .contentPostHolder{
-    min-height: 500px;
-    min-width: 500px;
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
     position: relative;
     width: 100%;
     display: flex;
@@ -90,7 +96,10 @@
     z-index: 0;
 }
 .pictureInOnePost{
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
     z-index: 0;
 }
 .buttonReactHolder{
@@ -152,7 +161,7 @@
     margin-bottom: 10px;
 
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     display: flex;
     flex-direction: column;
@@ -229,7 +238,7 @@
 
     border: none;
     resize: none;
-    overflow-y: scroll;
+    overflow-y: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .addCommentToPost[contenteditable]:hover{
@@ -247,11 +256,21 @@
 .postCommentPost:hover {
     cursor: pointer;
 }
-
+@media screen and (max-width: 570px) {
+    .contentPost{
+        height: 400px;
+    }
+    .postList{
+        width: 100%;
+    }
+    .onePostInList{
+        border-radius: 0;
+        border-bottom: 1px solid var(--Color3);
+    }
+}
 .hidebtn {
     display: none;
 }
-
 .showbtn{
     display: block;
 }

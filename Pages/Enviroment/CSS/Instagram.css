@@ -5,6 +5,7 @@
     margin: 30px auto 0px;
 
     display: flex;
+    justify-content: center;
     flex-direction: row;
 }
 .postList{
@@ -86,7 +87,7 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 .aSuggestPerson{
@@ -181,8 +182,14 @@
 .switchAcount:hover {
     color: var(--ColorFacebook);
 }
-
-
+@media screen and (max-width: 1160px) {
+    .profileAndSuggest{
+        display: none;
+    }
+    .postList{
+        margin: 0;
+    }
+}
 .hide{
     display: none;
 }
